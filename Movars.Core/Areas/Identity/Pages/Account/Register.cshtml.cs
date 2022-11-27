@@ -77,21 +77,31 @@ namespace Movars.Core.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl ??= Url.Content("~/");
+            returnUrl ??= Url.Content("~/Dashboard");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = CreateUser();
-                MailAddress address = new MailAddress(Input.Email);
-                string userName = address.User;
 
+                var user = CreateUser(); //creates a user object
+
+                // update user with Inout values
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
-                user.FirstName = Input.FirstName;
-                user.LastName = Input.LastName;
-                user.UserName = userName;
+                user.UserName = Input.Email;
 
-                // create user
+                // Assign values based on roles
+                if(Input.Role == RoleType.Owner)
+                {
+                    user.FirstName = Input.FirstName;
+                    user.LastName = Input.LastName;
+                }
+                else if(Input.Role == RoleType.Mover)
+                {
+                    user.CompanyName = Input.CompanyName;
+                    user.BusinessRegNo = Input.BusinessRegNo;
+                }
+
+                // create and add user
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
@@ -101,7 +111,7 @@ namespace Movars.Core.Areas.Identity.Pages.Account
                     var userId = await _userManager.GetUserIdAsync(user);
 
                     // add user to role
-                    _userManager.AddToRoleAsync(user, "Owner");                    
+                    await _userManager.AddToRoleAsync(user, Input.Role.ToString());                    
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
@@ -122,6 +132,7 @@ namespace Movars.Core.Areas.Identity.Pages.Account
                     //query["email"] = Input.Email;
                     //uriBuilder.Query = query.ToString();
                     //var urlString = uriBuilder.ToString();
+
                     var firstName = user.FirstName;
                     var placeholders = new Dictionary<string, string>
                     {
@@ -140,8 +151,6 @@ namespace Movars.Core.Areas.Identity.Pages.Account
                     await _mailService.SendMailAsync(mail);
 
                     // Send an email to this new user to the email provided using a notification service
-                    //var senderEmail = _config["ReturnPaths:SenderEmail"];
-                    //await _notify.SendEmailAsync(senderEmail, user.Email, "Confirm your email address", urlString);
 
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)

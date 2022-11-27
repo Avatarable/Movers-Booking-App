@@ -27,13 +27,12 @@ namespace Movars.Core.Models.ViewModels
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [Required]
         [DataType(DataType.PhoneNumber)]
-        public string PhoneNumber { get; set; }
+        public string? PhoneNumber { get; set; }
 
         [StringLength(15, MinimumLength = 3, ErrorMessage = "Must be between 3 and 15")]
-        public string CompanyName { get; set; }
-        public string BusinessRegNo { get; set; }
+        public string? CompanyName { get; set; }
+        public string? BusinessRegNo { get; set; }
         public RoleType Role { get; set; }
     }
 

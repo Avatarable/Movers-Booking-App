@@ -1,47 +1,10 @@
 ﻿@page
+@using Movars.Core.Models.ViewModels
 @model RegisterModel
 @{
     ViewData["Title"] = "Register";
     Layout = "_AuthLayout";
 }
-
-<div class="row">
-    <div class="col-md-4">
-        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Create a new account.</h2>
-            <hr />
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-floating">
-                <input asp-for="Input.FirstName" class="form-control" autocomplete="firstname" aria-required="true" />
-                <label asp-for="Input.FirstName"></label>
-                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.LastName" class="form-control" autocomplete="lastname" aria-required="true" />
-                <label asp-for="Input.LastName"></label>
-                <span asp-validation-for="Input.LastName" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
-                <label asp-for="Input.Email"></label>
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
-                <label asp-for="Input.Password"></label>
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
-                <label asp-for="Input.ConfirmPassword"></label>
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-            </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
-        </form>
-    </div>
-</div>
-
-
 
 <div class="register main-wrapper">
 	<div class="header">
@@ -61,6 +24,7 @@
 		<div class="tab-content" id="myTabContent">
 			<form asp-route-returnUrl="@Model.ReturnUrl" method="post" id='register_owner' class="tab-pane fade show active" role="tabpanel" aria-labelledby="owner-tab">
 				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+				<input asp-for="Input.Role" value="@RoleType.Owner" aria-required="true" hidden />
 				<div class="form-group">
 					<input asp-for="Input.FirstName" class='form-control' placeholder="First Name" aria-required="true" />
 					<iconify-icon icon="mingcute:user-3-line"></iconify-icon>
@@ -89,15 +53,16 @@
 				<div class="form-group">
 					<button class='btn btn__secondary_filled w-100' type="submit">Signup</button>
 				</div>
-				</form>
+			</form>
 			<form asp-route-returnUrl="@Model.ReturnUrl" method="post" id='register_mover' class="tab-pane fade" role="tabpanel" aria-labelledby="mover-tab">
+				<input asp-for="Input.Role" value="@RoleType.Mover" aria-required="true" hidden />
 					<div class="form-group">
-					<input asp-for="Input.CompanyName" class='form-control' placeholder="First Name" aria-required="true" />
+					<input asp-for="Input.CompanyName" class='form-control' placeholder="Company Name" aria-required="true" />
 						<iconify-icon icon="mingcute:user-3-line"></iconify-icon>
 					<span asp-validation-for="Input.CompanyName" class="text-danger"></span>
 					</div>
 					<div class="form-group">
-						<input asp-for="Input.BusinessRegNo" class='form-control'  placeholder="First Name" aria-required="true" />
+						<input asp-for="Input.BusinessRegNo" class='form-control'  placeholder="Business Reg. Number" aria-required="true" />
 						<iconify-icon icon="mingcute:user-3-line"></iconify-icon>
 						<span asp-validation-for="Input.BusinessRegNo" class="text-danger"></span>
 					</div>
@@ -112,7 +77,7 @@
 					<span asp-validation-for="Input.Password" class="text-danger"></span>
 					</div>
 					<div class="form-group">
-						<input type="password" class='form-control' placeholder="Confirm Password" aria-required="true" />
+						<input asp-for="Input.ConfirmPassword" class='form-control' placeholder="Confirm Password" aria-required="true" />
 						<iconify-icon icon="uil:padlock"></iconify-icon>
 					<span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
 					</div>

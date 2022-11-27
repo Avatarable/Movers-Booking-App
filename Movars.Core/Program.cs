@@ -16,17 +16,21 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
+// registering Identity for Account handling
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => {
     options.SignIn.RequireConfirmedAccount = false;
     options.Password.RequireNonAlphanumeric = false;
-}).AddEntityFrameworkStores<ApplicationDbContext>();
+}).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
 builder.Services.AddControllersWithViews();
 
+// registering MailJet Email Sender Service
 builder.Services.AddHttpClient<IMailjetClient, MailjetClient>(client =>
 {
-    client.UseBasicAuthentication(builder.Configuration.GetSection("MailJetKeys")["ApiKey"], builder.Configuration.GetSection("MailJetKeys")["ApiSecret"]);
+    client.UseBasicAuthentication(builder.Configuration.GetSection("MailJetKeys")["ApiKey"], 
+        builder.Configuration.GetSection("MailJetKeys")["ApiSecret"]);
 });
+
 builder.Services.ConfigureServices();
 
 builder.Services.AddTransient<IEmailSender, EmailSender>();
