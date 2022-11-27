@@ -1,0 +1,249 @@
+.btn {
+    width: 5rem;
+}
+
+.btn__primary {
+    background-color: var(--coral);
+    color: var(--light);
+}
+
+    .btn__primary:hover {
+        background-color: var(--dusty-green);
+        color: var(--light);
+    }
+
+.btn__secondary {
+    color: var(--dusty-navy);
+    border-color: var(--dusty-navy);
+}
+
+    .btn__secondary:hover {
+        color: var(--white);
+        background-color: var(--dusty-navy);
+    }
+
+.btn__secondary_filled {
+    color: var(--light);
+    background-color: var(--dusty-navy);
+}
+
+.btn__danger {
+    color: var(--light);
+    background-color: var(--danger);
+}
+
+    .btn__danger:hover {
+        background-color: var(--beige);
+        color: var(--danger);
+        border-color: var(--danger);
+    }
+
+
+.bigger-text {
+    font-size: 43px;
+    font-weight: 700;
+    line-height: 44px;
+    letter-spacing: -1.71px;
+    margin-bottom: 15px;
+}
+
+.big-text {
+    font-size: 33px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: -1.71px;
+    margin-bottom: 15px;
+}
+
+
+/* Start Landing Section */
+.navbar {
+    background-color: var(--beige);
+    padding: 15px 0;
+}
+
+    .navbar .logo {
+        width: 80px;
+        height: 40px;
+    }
+
+.logo img {
+    width: 100%;
+}
+
+.landing .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 100%;
+}
+
+.landing .text {
+    text-align: center;
+    flex: 1;
+}
+
+
+.landing .image {
+    display: none;
+}
+
+    .landing .image img {
+        width: 100%;
+    }
+
+.btn__action {
+    width: 80%;
+    margin-top: 10px;
+}
+
+
+.service {
+    border: 2px solid transparent;
+    border-radius: 15px;
+    padding: 50px 7px;
+    transition: all 0.1s ease-in;
+}
+
+    .service:hover {
+        border: 2px solid var(--dusty-green);
+    }
+
+    .service .icon {
+        text-align: center;
+    }
+
+        .service .icon iconify-icon {
+            font-size: 3rem;
+            color: rgba(var(--coral), 1);
+            cursor: default;
+        }
+
+    .service .title {
+        font-size: .8rem;
+        font-weight: bold;
+    }
+
+.desc {
+    font-weight: 600;
+    color: var(--gray);
+}
+
+.service .desc {
+    font-size: .7rem;
+}
+
+.service iconify-icon {
+    cursor: pointer;
+}
+
+
+
+.head__text {
+    text-align: center;
+    margin-bottom: 5rem;
+    font-weight: 700;
+}
+
+.pitch__wrapper {
+    column-gap: 2rem;
+}
+
+.pitch .title {
+    font-size: 1.4rem;
+    font-weight: bolder;
+}
+
+.pitch .icon {
+    text-align: center;
+}
+
+    .pitch .icon iconify-icon {
+        font-size: 3rem;
+        color: rgba(var(--coral), 1);
+        cursor: default;
+    }
+
+.pitch .desc {
+    font-size: 0.9rem;
+}
+
+
+/*  ACCORDIAN */
+
+.accordion-body {
+    background-color: var(--beige) !important;
+    color: var(--gray);
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.accordion-flush .accordion-item .accordion-button {
+    background-color: var(--beige) !important;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+    .accordion-flush .accordion-item .accordion-button:focus {
+        border: none;
+        outline: none;
+    }
+
+.accordion-button:not(.collapsed) {
+    color: var(--dusty-navy);
+}
+
+.accordion-flush .accordion-item .accordion-button::after {
+    color: var(--dusty-navy);
+}
+
+.accordion-button:focus {
+    color: var(--dusty-navy);
+}
+
+.accordion-button:not(.collapsed)::after {
+    color: var(--dusty-navy) !important;
+}
+
+.accordion-button::after {
+    color: var(--dusty-navy) !important;
+}
+
+
+
+
+
+
+@media (min-width: 600px) {
+    .landing .text span {
+        font-size: 18px;
+    }
+
+    .bigger-text {
+        font-size: 48px;
+        line-height: 48px;
+        text-align: left;
+    }
+
+    .landing .text {
+        text-align: start;
+        flex: 1.35;
+    }
+
+    .landing .image {
+        display: block;
+        flex: 0.65;
+        z-index: -1;
+    }
+
+    .btn__action {
+        width: inherit;
+    }
+}
+
+@media (min-width: 800px) {
+    .landing .image {
+        flex: 1.3;
+    }
+}

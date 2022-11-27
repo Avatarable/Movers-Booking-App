@@ -1,0 +1,333 @@
+[
+  {
+    "id": "7770e5dc-221e-4012-a486-cf3e7ad885d8",
+    "firstName": "Goff",
+    "lastName": "Sheena",
+    "isActive": false,
+    "email": "sheenastokes@powernet.com",
+    "phone": "+234 (970) 412-2297",
+    "address": {
+      "Id": "3653c9a4-a1ab-485b-814e-448b28027c17",
+      "description": "822 Franklin Avenue",
+      "city": "Yorklyn",
+      "state": "Florida",
+      "country": "Nigeria"
+    }
+  },
+  {
+    "id": "d71f91c4-0789-42a8-9fd0-60535544219e",
+    "firstName": "Arnold",
+    "lastName": "Geraldine",
+    "isActive": false,
+    "email": "geraldinestokes@powernet.com",
+    "phone": "+234 (844) 420-2099",
+    "address": {
+      "Id": "295cdfae-aa60-4470-9fa5-b31e60a84553",
+      "description": "823 Sutton Street",
+      "city": "Roeville",
+      "state": "New Mexico",
+      "country": "Nigeria"
+    }
+  },
+  {
+    "id": "22227103-aa3b-4a5c-a7a2-77265628ba67",
+    "firstName": "Rena",
+    "lastName": "Ellis",
+    "isActive": true,
+    "email": "ellisstokes@powernet.com",
+    "phone": "+234 (928) 563-2994",
+    "address": {
+      "Id": "6211ca02-ddeb-4c76-836e-edf3ecf818fa",
+      "description": "853 Hemlock Street",
+      "city": "Lloyd",
+      "state": "Tennessee",
+      "country": "Nigeria"
+    }
+  },
+  {
+    "id": "ffcd0f55-4a65-429b-8d2a-d6619c75b0df",
+    "firstName": "Kari",
+    "lastName": "Collier",
+    "isActive": false,
+    "email": "collierstokes@powernet.com",
+    "phone": "+234 (899) 559-3341",
+    "address": {
+      "Id": "36b08cda-d55e-4df9-8eff-97dac64408ae",
+      "description": "432 Glenmore Avenue",
+      "city": "Rodman",
+      "state": "Nevada",
+      "country": "Nigeria"
+    }
+  },
+  {
+    "id": "b1f76c57-761a-42f0-afe8-abc5f02ebb51",
+    "firstName": "Delores",
+    "lastName": "Allison",
+    "isActive": true,
+    "email": "allisonstokes@powernet.com",
+    "phone": "+234 (915) 455-3605",
+    "address": {
+      "Id": "b7e3f5d0-6cbd-4f43-bad5-cd7d15c00a31",
+      "description": "903 Jamison Lane",
+      "city": "Robinson",
+      "state": "Idaho",
+      "country": "Nigeria"
+    }
+  },
+
+  {
+    "id": "cd44bf95-4822-4769-8398-7d95152ba1f1",
+    "firstName": null,
+    "lastName": null,
+    "isActive": false,
+    "email": "marybird@miracula.com",
+    "phone": "+234 (812) 468-2649",
+    "address": {
+      "Id": "d08677e2-c89e-4b07-8682-068b354b7ba8",
+      "description": "674 Concord Street",
+      "city": "Brazos",
+      "state": "North Dakota",
+      "country": "Nigeria"
+    },
+    "companyName": "ELITA",
+    "businessRegNo": "CAC9997"
+  },
+  {
+    "id": "62220872-5ec3-43e8-8629-e17ed21999f9",
+    "firstName": null,
+    "lastName": null,
+    "isActive": false,
+    "email": "marybird@elita.com",
+    "phone": "+234 (898) 596-2578",
+    "address": {
+      "Id": "f7584511-dfdb-4a80-a3d8-3b1d1f270da4",
+      "description": "631 Macon Street",
+      "city": "Urie",
+      "state": "Texas",
+      "country": "Nigeria"
+    },
+    "companyName": "EXOZENT",
+    "businessRegNo": "CAC7873"
+  },
+  {
+    "id": "abcb7a84-c10e-40ba-940e-a8eb56b4e45e",
+    "firstName": null,
+    "lastName": null,
+    "isActive": true,
+    "email": "marybird@exozent.com",
+    "phone": "+234 (962) 504-2760",
+    "address": {
+      "Id": "93884157-08b8-42e3-baf7-cd67947a8173",
+      "description": "139 Sumpter Street",
+      "city": "Carrsville",
+      "state": "Wyoming",
+      "country": "Nigeria"
+    },
+    "companyName": "INTERODEO",
+    "businessRegNo": "CAC9997"
+  },
+  {
+    "id": "5c12bf2e-b991-4d73-91b7-b162d5068298",
+    "firstName": null,
+    "lastName": null,
+    "isActive": true,
+    "email": "marybird@interodeo.com",
+    "phone": "+234 (894) 487-3074",
+    "address": {
+      "Id": "e3dd1efa-ff92-4c60-a20c-a2d6a018b340",
+      "description": "221 Pierrepont Street",
+      "city": "Sabillasville",
+      "state": "Maine",
+      "country": "Nigeria"
+    },
+    "companyName": "ENOMEN",
+    "businessRegNo": "CAC9997"
+  },
+  {
+    "id": "87ee7684-d7fa-4f5b-bad5-3761c0e44301",
+    "firstName": null,
+    "lastName": null,
+    "isActive": true,
+    "email": "marybird@enomen.com",
+    "phone": "+234 (902) 465-2088",
+    "address": {
+      "Id": "0931800d-66d5-418b-a2ee-2b11dadcd868",
+      "description": "799 Homecrest Avenue",
+      "city": "Konterra",
+      "state": "Illinois",
+      "country": "Nigeria"
+    },
+    "companyName": "CABLAM",
+    "businessRegNo": "CAC9997"
+  },
+  {
+    "id": "31a657b3-f270-4f32-b615-ac60e5c80300",
+    "firstName": null,
+    "lastName": null,
+    "isActive": true,
+    "email": "marybird@cablam.com",
+    "phone": "+234 (954) 517-2276",
+    "address": {
+      "Id": "541e462f-8a62-4ee3-b627-9353fbcb4ad1",
+      "description": "856 Ebony Court",
+      "city": "Newry",
+      "state": "Kansas",
+      "country": "Nigeria"
+    },
+    "companyName": "EVENTAGE",
+    "businessRegNo": "CAC9997"
+  },
+  {
+    "id": "2a1809f7-8c8e-4540-bba1-9afd30fb44a9",
+    "firstName": null,
+    "lastName": null,
+    "isActive": false,
+    "email": "marybird@eventage.com",
+    "phone": "+234 (895) 548-2792",
+    "address": {
+      "Id": "9362b578-da46-46b0-8a70-d4edcd4bb31f",
+      "description": "470 Louis Place",
+      "city": "Carbonville",
+      "state": "Colorado",
+      "country": "Nigeria"
+    },
+    "companyName": "VELOS",
+    "businessRegNo": "CAC7873"
+  },
+  {
+    "id": "fa3310e9-25f6-44bf-9045-2728728d4685",
+    "firstName": null,
+    "lastName": null,
+    "isActive": false,
+    "email": "marybird@velos.com",
+    "phone": "+234 (973) 548-3857",
+    "address": {
+      "Id": "f2550677-9deb-4ee0-b664-6904ee0180f2",
+      "description": "538 Troy Avenue",
+      "city": "Germanton",
+      "state": "New Mexico",
+      "country": "Nigeria"
+    },
+    "companyName": "FISHLAND",
+    "businessRegNo": "CAC9997"
+  },
+  {
+    "id": "29d279f4-259b-43fe-98c8-b786be0a2b2e",
+    "firstName": null,
+    "lastName": null,
+    "isActive": true,
+    "email": "marybird@fishland.com",
+    "phone": "+234 (878) 578-3326",
+    "address": {
+      "Id": "bc7fbbdb-7d8f-4e61-b519-bb4bfedbedfd",
+      "description": "828 Hyman Court",
+      "city": "Jacksonburg",
+      "state": "Northern Mariana Islands",
+      "country": "Nigeria"
+    },
+    "companyName": "ROOFORIA",
+    "businessRegNo": "CAC9997"
+  },
+  {
+    "id": "969470f8-fff0-4461-a8bf-290669297ba2",
+    "firstName": null,
+    "lastName": null,
+    "isActive": true,
+    "email": "marybird@rooforia.com",
+    "phone": "+234 (919) 456-3467",
+    "address": {
+      "Id": "b062805d-5207-495d-90ed-bc76d9285eaf",
+      "description": "893 Crawford Avenue",
+      "city": "Kingstowne",
+      "state": "American Samoa",
+      "country": "Nigeria"
+    },
+    "companyName": "VIRVA",
+    "businessRegNo": "CAC9997"
+  },
+  {
+    "id": "29415d76-aa59-4b60-b56b-2917e56a6eac",
+    "firstName": null,
+    "lastName": null,
+    "isActive": true,
+    "email": "marybird@virva.com",
+    "phone": "+234 (966) 547-3677",
+    "address": {
+      "Id": "f1b1cdb3-624b-4172-b522-03c8c95866d1",
+      "description": "788 Sunnyside Avenue",
+      "city": "Dargan",
+      "state": "Louisiana",
+      "country": "Nigeria"
+    },
+    "companyName": "RECOGNIA",
+    "businessRegNo": "CAC7873"
+  },
+  {
+    "id": "ce594cd7-f9f4-4ded-934c-e03d167b2dbd",
+    "firstName": null,
+    "lastName": null,
+    "isActive": false,
+    "email": "marybird@recognia.com",
+    "phone": "+234 (955) 523-2481",
+    "address": {
+      "Id": "8ed22648-44c9-446f-9780-ac84926349c2",
+      "description": "702 Gerry Street",
+      "city": "Drytown",
+      "state": "Oregon",
+      "country": "Nigeria"
+    },
+    "companyName": "IDEGO",
+    "businessRegNo": "CAC7873"
+  },
+  {
+    "id": "90368bd4-ab0b-49f1-8b4d-59dfa35e15ef",
+    "firstName": null,
+    "lastName": null,
+    "isActive": false,
+    "email": "marybird@idego.com",
+    "phone": "+234 (883) 503-3567",
+    "address": {
+      "Id": "504d9493-89ac-4325-bee8-4dbd57bce131",
+      "description": "917 Emerson Place",
+      "city": "Swartzville",
+      "state": "Michigan",
+      "country": "Nigeria"
+    },
+    "companyName": "EPLODE",
+    "businessRegNo": "CAC9997"
+  },
+  {
+    "id": "7f1c4bb6-f52c-47a5-8b73-7db406b3082d",
+    "firstName": null,
+    "lastName": null,
+    "isActive": true,
+    "email": "marybird@eplode.com",
+    "phone": "+234 (840) 506-3542",
+    "address": {
+      "Id": "cd256bbd-ffea-4796-a2b1-8259606b5d3a",
+      "description": "679 Greene Avenue",
+      "city": "Adamstown",
+      "state": "Vermont",
+      "country": "Nigeria"
+    },
+    "companyName": "ZINCA",
+    "businessRegNo": "CAC9997"
+  },
+  {
+    "id": "037fe556-a667-4995-9ea9-970d250f218b",
+    "firstName": null,
+    "lastName": null,
+    "isActive": false,
+    "email": "marybird@zinca.com",
+    "phone": "+234 (874) 555-2885",
+    "address": {
+      "Id": "f1329885-862c-4f00-93e0-a343a6be557d",
+      "description": "505 Barbey Street",
+      "city": "Roosevelt",
+      "state": "California",
+      "country": "Nigeria"
+    },
+    "companyName": "LOVEPAD",
+    "businessRegNo": "CAC7873"
+  }
+]

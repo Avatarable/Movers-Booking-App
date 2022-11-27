@@ -1,0 +1,80 @@
+:root {
+    --primary-color: #101828;
+    --light: #f2f2f2;
+    --overlay: rgba(46, 41, 78, 0.74);
+    --white: #FFFFFF;
+    --madarin: #EF8354;
+    --brown1: #D17A22;
+    --brown2: #CE796B;
+    --gray-light: rgb(210, 205, 200);
+    --gray: gray;
+    --dusty-overlay: rgb(224, 122, 95, 0.74);
+    --beige: #f4f1de;
+    --coral: #e07a5f;
+    --coral-light: rgb(224, 122, 95, 0.3);
+    --dusty-navy: #3d405b;
+    --dusty-green: #81b29a;
+    --very-dusty-green: rgba(178, 214, 196, 0.5);
+    --dusty-brown: #f2cc8f;
+    --overlay-dark: rgba(0, 0, 0, 0.6);
+    --danger: #fc7876;
+    --green: #38C798;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    font-family: 'Proxima Nova', sans-serif;
+}
+
+body {
+    background-color: var(--beige);
+}
+
+section {
+    min-height: 100vh;
+    overflow: visible;
+    position: relative;
+    padding: 8rem 0;
+    border-bottom: 1px solid var(--very-dusty-green);
+}
+
+.bg__primary {
+    background-color: var(--coral);
+}
+
+.bg__secondary {
+    background-color: var(--dusty-navy);
+}
+
+.text__primary {
+    color: var(--coral);
+}
+
+.text__secondary {
+    color: var(--dusty-navy);
+}
+
+.text__light {
+    color: var(--light);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: var(--dusty-overlay);
+}
+
+.overlay-dark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: var(--overlay-dark);
+    z-index: 0;
+}

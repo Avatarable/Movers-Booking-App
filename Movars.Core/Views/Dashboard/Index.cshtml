@@ -1,0 +1,61 @@
+﻿
+@{
+}
+
+
+@*----- OWNER DASHBOARD ------*@
+<section class="container">
+        <div class="d-flex request__wrapper">        
+            <div class="request__list">
+                <div class="actions d-flex gap-3 mb-4">
+                    <a asp-action="NewRequest" class='btn btn__secondary_filled new_link'>New</a>
+                    <button class='btn btn__danger'>Delete</button>
+                </div>
+            @*----map----*@
+                <div class="request active" role="button">
+                    <p class="title">Want to move 1 Room</p>
+                    <p class="route">From Surulere to Ikoyi</p>
+                    <iconify-icon icon="material-symbols:arrow-forward-ios-rounded"></iconify-icon>
+                </div>
+                
+                <div class="request" role="button">
+                    <p class="title">Want to move 1 Room</p>
+                    <p class="route">From Surulere to Ikoyi</p>
+                    <iconify-icon icon="material-symbols:arrow-forward-ios-rounded"></iconify-icon>
+                </div>
+            @*-------------*@
+
+            </div>
+            <div class="details">
+                <div class="info__card d-flex flex-column justify-content-between">
+                    <div class="overlay-dark"></div>
+                    <p class="title align-self-baseline">Want to move 1 Room</p>
+                    <div>
+                        <p class='detail'>Details</p>
+                        <p class="note align-self-end">The booking for relocation on 12th April 2022. From Surulere to Ikoyi.</p>
+                    </div>
+                </div>
+                <div class="bids__card">
+                    <p class="title">Receiving Bids</p>
+                    <div class="bids__list">
+                        @*----map----*@
+                            <div class="bid d-flex">
+                                <div class="info">
+                                    <p class="amount">₦20000</p>
+                                    <p class="mover">ABC Movers Ltd.</p>
+                                </div>
+                                <div class="action d-flex align-items-center gap-4">
+                                    <div class="rating">
+                                        <iconify-icon icon="ic:round-star"></iconify-icon>
+                                        <iconify-icon icon="ic:round-star"></iconify-icon>
+                                        <iconify-icon icon="ic:round-star"></iconify-icon>
+                                    </div>
+                                    <button class="btn btn__select">Select</button>
+                                </div>
+                            </div>
+                       @*-----------*@
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>

@@ -1,0 +1,254 @@
+/* -------Navbar -------*/
+
+.navbar iconify-icon {
+    color: var(--dusty-navy);
+}
+
+.notif-icon, .profile__head .photo {
+    border: 1px solid var(--gray-light);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.notif-icon {
+    height: 30px;
+    width: 30px;
+    position: relative;
+}
+.notif-icon::after{
+    content: ' ';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: var(--dusty-green);
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    border-radius: 50%;
+}
+
+.profile__head {
+    display: flex;
+    align-items: center;
+    line-height: 1rem;
+    gap: 7px;
+}
+.profile__head .photo {
+    height: 35px;
+    width: 35px;
+}
+.profile__head p {
+    margin: 0;
+}
+.profile__head .name {
+    font-weight: bold;
+    color: var(--dusty-navy);
+}
+.profile__head .role {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--gray);
+}
+
+.profile__head iconify-icon {
+    font-size: 1.5rem;
+}
+
+.dropdown-menu {
+    background-color: var(--beige);
+    padding: 0;
+    width: 200px;
+}
+.dropdown-menu.show {
+    margin-top: 0.7rem;
+}
+
+.dropdown-menu .dropdown-item {
+    color: var(--dusty-navy);
+    padding-top: 7px;
+    padding-bottom: 7px;
+    transition: all 0.2s ease-in;
+}
+.dropdown-menu .dropdown-item:hover{
+    background-color: var(--dusty-navy);
+    font-weight: bold;
+    color: var(--light);
+}
+
+.dropdown-menu iconify-icon {
+    margin-right: 10px;
+    transition: all 0.2s ease-in;
+}
+
+.dropdown-menu .dropdown-item:hover iconify-icon {
+    font-weight: bold;
+    color: var(--light);
+}
+
+
+
+/* -------Request -------*/
+.request__wrapper {
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 10%;
+}
+
+.request__wrapper .request__list {
+    flex: 1;
+}
+
+.request__list .actions {
+    position: sticky;
+    top: 70px;
+    z-index: 110;
+    background-color: var(--beige);
+}
+.request__list .actions button {
+    width: 50%;
+}
+.request__list .actions .new_link {
+    padding-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+
+}
+
+.request {
+    border: 1px solid var(--gray-light);
+    background-color: var(--beige);
+    border-radius: 10px;
+    padding: 15px 25px;
+    margin-bottom: 20px;
+    line-height: 1.3rem;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+}
+.request:hover, .request.active {
+    position: sticky;
+    z-index: 100;
+    top: 130px;
+    border-color: transparent;
+    box-shadow:  12px 12px 24px #e0decc,
+                -12px -12px 24px #fffff0;
+}
+.request p {
+    margin: 0;
+}
+
+.request .title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--dusty-navy);
+}
+.request .route {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--gray);
+}
+.request iconify-icon {
+    color: var(--gray);
+    font-size: 1.5rem;
+    position: absolute;
+    top: 35%;
+    right: 20px;
+}
+
+
+/* -------- Details --------------*/
+.request__wrapper .details {
+    flex: 1;
+    transition: all 0.2s ease-in;
+}
+.details .info__card {
+    width: 100%;
+    min-height: 250px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    background-color: var(--biege);
+    background-image: url('/images/pexels_room1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+    padding: 20px 30px;
+    color: var(--light);
+}
+
+.details .info__card .title {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.details .info__card p {
+    position: relative;
+    margin: 0;
+}
+.details .info__card .detail {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+
+/* ----------- Bids ----------*/
+
+.bids__card {
+    position: sticky;
+    top: 60px;
+
+}
+.bids__card .title {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    font-weight: bolder;
+}
+
+.bids__list p {
+    margin: 0;
+}
+
+.bid {
+    padding: 15px 0;
+    margin-bottom: 10px;
+    line-height: 1.3rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bid .amount {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--dusty-navy);
+}
+.bid .mover {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--gray);
+}
+
+.bid .rating {
+    height: 100%;
+}
+.bid .rating iconify-icon {
+    color: var(--dusty-brown);
+}
+
+.bid .btn__select {
+    background-color: var(--coral);
+    color: var(--light);
+    transition: all 0.2s ease-in;
+}
+.bid .btn__select:hover {
+    background-color: var(--dusty-green);
+}
+
+
+@media only screen and (min-width: 760px){
+    .request__wrapper {
+        flex-direction: row;
+    }
+}
