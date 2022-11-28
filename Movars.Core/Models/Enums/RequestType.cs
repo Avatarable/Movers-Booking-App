@@ -6,6 +6,7 @@ namespace Movars.Core.Models.Enums
     {
         Home,
         Office,
+        Labour,
         Others
     }
 }

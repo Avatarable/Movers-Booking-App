@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Movars.Core.Models;
 using Movars.Core.Models.Enums;
@@ -6,6 +7,7 @@ using Movars.Core.Services.Interfaces;
 
 namespace Movars.Core.Controllers
 {
+	[Authorize]
 	public class DashboardController : Controller
 	{
 		private readonly UserManager<ApplicationUser> _userManager;

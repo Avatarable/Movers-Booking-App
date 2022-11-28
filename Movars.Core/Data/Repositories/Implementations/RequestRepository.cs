@@ -44,7 +44,8 @@ namespace Movars.Core.Data.Repositories.Implementations
 
         public async Task<IEnumerable<Request>> GetAllRequestsByOwner(string ownerId)
         {
-            return await _context.Requests.Where(x => x.Owner.Id == ownerId).ToListAsync();
+            return await _context.Requests.Include(x => x.PickupAddress).Include(x => x.DeliveryAddress)
+                .Where(x => x.Owner.Id == ownerId).ToListAsync();
         }
 
         public async Task<IEnumerable<Request>> GetAllRequestsByStatus(RequestStatus status)

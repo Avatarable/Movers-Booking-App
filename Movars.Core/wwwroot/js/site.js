@@ -1,5 +1,6 @@
 ﻿
-function activate(e) {
+function activate(e, id) {
+    
     let requests = document.querySelectorAll(".request");   //get all requests
     requests.forEach(x => x.classList.remove("active"));    //remove 'active' from all requests
 
@@ -7,5 +8,8 @@ function activate(e) {
 
     let details = document.querySelectorAll(".holder");   //get all details
     details.forEach(x => x.classList.remove("show"))    //remove 'show' from all details
-    document.getElementById(e.id).classList.add("show");    //add 'show' to current detail
+
+    let el = document.getElementById(id);
+    console.log(el);
+    el.classList.add("show");    //add 'show' to current detail
 };

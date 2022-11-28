@@ -12,62 +12,63 @@
                 <div class="actions d-flex gap-3 mb-4">
                     <a asp-action="NewRequest" class='btn btn__secondary_filled new_link'>New</a>
                     @if(requests.ToList().Count > 0){<button class='btn btn__danger'>Delete</button>}
-                    else {<button class='btn btn__danger' hidden>Delete</button>}
-                    
+                    else {<button class='btn btn__danger' hidden>Delete</button>}                    
                 </div>
+
             @*----map----*@
             @{
                 foreach(var request in (requests ?? new List<Request>()))
                 {
-                    <div class="request" role="button" onclick="activate(this)">
-                        <p class="title">Want to move @request.RoomsCount Room</p>
-                        <p class="route">From @request.PickupAddress!.City to @request.DeliveryAddress!.City</p>
-                        <iconify-icon icon="material-symbols:arrow-forward-ios-rounded"></iconify-icon>
-                    </div>
+                        <div class="request" role="button" onclick="activate(this, '@request.Id')">
+                            <p class="title">Want to move @request.RoomsCount Room</p>
+                            <p class="route">From @request.PickupAddress!.City to @request.DeliveryAddress!.City</p>
+                            <iconify-icon icon="material-symbols:arrow-forward-ios-rounded"></iconify-icon>
+                        </div>
                 }
             }
-                
-                
+                                
             @*-------------*@
 
             </div>
 
              <div class="details">
+
+         
             @{
                 foreach (var request in (requests ?? new List<Request>()))
                 {
-                    <div class="holder" id="@request.Id">
-                        <div class="info__card d-flex flex-column justify-content-between">
-                            <div class="overlay-dark"></div>
-                            <p class="title align-self-baseline">Want to move @request.RoomsCount Room</p>
-                            <div>
-                                <p class='detail'>Details</p>
-                                <p class="note align-self-end">The booking for relocation on @request.PickupDate.ToShortDateString(). From @request.PickupAddress!.City to @request.DeliveryAddress!.City.</p>
+                        <div class="holder" id="@request.Id">
+                            <div class="info__card d-flex flex-column justify-content-between">
+                                <div class="overlay-dark"></div>
+                                <p class="title align-self-baseline">Want to move @request.RoomsCount Room</p>
+                                <div>
+                                    <p class='detail'>Details</p>
+                                    <p class="note align-self-end">The booking for relocation on @request.PickupDate.Date. From @request.PickupAddress!.City to @request.DeliveryAddress!.City.</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="bids__card">
-                            <p class="title">Receiving Bids</p>
-                            <div class="bids__list">
-                                @*----map----*@
-                                    <div class="bid d-flex">
-                                        <div class="info">
-                                            <p class="amount">₦20000</p>
-                                            <p class="mover">ABC Movers Ltd.</p>
-                                        </div>
-                                        <div class="action d-flex align-items-center gap-4">
-                                            <div class="rating">
-                                                <iconify-icon icon="ic:round-star"></iconify-icon>
-                                                <iconify-icon icon="ic:round-star"></iconify-icon>
-                                                <iconify-icon icon="ic:round-star"></iconify-icon>
+                            <div class="bids__card">
+                                <p class="title">Receiving Bids</p>
+                                <div class="bids__list">
+                                    @*----map----*@
+                                        <div class="bid d-flex">
+                                            <div class="info">
+                                                <p class="amount">₦20000</p>
+                                                <p class="mover">ABC Movers Ltd.</p>
                                             </div>
-                                            <button class="btn btn__select">Select</button>
+                                            <div class="action d-flex align-items-center gap-4">
+                                                <div class="rating">
+                                                    <iconify-icon icon="ic:round-star"></iconify-icon>
+                                                    <iconify-icon icon="ic:round-star"></iconify-icon>
+                                                    <iconify-icon icon="ic:round-star"></iconify-icon>
+                                                </div>
+                                                <button class="btn btn__select">Select</button>
+                                            </div>
                                         </div>
-                                    </div>
-                               @*-----------*@
+                                   @*-----------*@
+                                </div>
                             </div>
                         </div>
-                    </div>
-                 }
+                }
             }
             </div>
         </div>

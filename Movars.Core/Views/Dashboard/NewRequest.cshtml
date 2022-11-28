@@ -1,14 +1,15 @@
-﻿
+﻿@using Movars.Core.Models.ViewModels
+@model NewRequestViewModel
 @{
 }
 
-<form method="post" asp-action="Create">
+<form method="post" asp-controller="Request" asp-action="Create">
 <section class="container request_form_wrapper">
     <h1 class="heavy__text mb-4">Select Type</h1>
     <div class="row types__wrapper gap-5">
 
-        <input type="radio" name="request_types" id="rbApartment" />
-        <label for="rbApartment" class="type col">
+            <input type="radio" value="home" asp-for="@Model.RbType" id="rbHome" />
+            <label asp-for="@Model.RbType" for="rbHome" class="type col">
             <div class="banner apart mb-3">
                 <div class="overlay-dark d-flex">
                     <div class="checkmark d-flex">
@@ -18,10 +19,10 @@
             </div>
             <p class="title">Apartment Move</p>
             <p class="desc">Move your studio 1Room or 2Rooms apartment</p>
-        </label>
+            </label>
 
-        <input type="radio" name="request_types" id="rbOffice" />
-        <label for="rbOffice" class="type col">
+            <input type="radio" value="office" asp-for="@Model.RbType" id="rbOffice" />
+            <label asp-for="@Model.RbType" for="rbOffice" class="type col">
             <div class="banner office mb-3">
                 <div class="overlay-dark d-flex">
                     <div class="checkmark d-flex">
@@ -31,35 +32,34 @@
             </div>
             <p class="title">Office Move</p>
             <p class="desc">An easy way to move your office items</p>
-        </label>
+             </label>
 
-        <input type="radio" name="request_types" id="rbLabour" />
-        <label for="rbLabour" class="type col">
+            <input type="radio" value="labour" asp-for="@Model.RbType" id="rbLabour" />
+            <label asp-for="@Model.RbType" for="rbLabour" class="type col">
             <div class="banner labour mb-3">
                 <div class="overlay-dark d-flex">
                     <div class="checkmark d-flex">
                         <iconify-icon icon="material-symbols:check-small-rounded"></iconify-icon>
                     </div>
                 </div>
-            </div>
-            <p class="title">No Truck, Laobour Only</p>
-            <p class="desc">No truck, but a ton of muscle</p>
-        </label>
+                </div>
+                <p class="title">No Truck, Laobour Only</p>
+                <p class="desc">No truck, but a ton of muscle</p>
+            </label>
 
-        <input type="radio" name="request_types" id="rbOthers" />
-        <label for="rbOthers" class="type col">
-            <div class="banner others mb-3">
-                <div class="overlay-dark d-flex">
-                    <div class="checkmark d-flex">
-                        <iconify-icon icon="material-symbols:check-small-rounded"></iconify-icon>
+            <input type="radio" value="other" asp-for="@Model.RbType" id="rbOther" />
+            <label asp-for="@Model.RbType" for="rbOther" class="type col">
+                <div class="banner labour mb-3">
+                    <div class="overlay-dark d-flex">
+                        <div class="checkmark d-flex">
+                            <iconify-icon icon="material-symbols:check-small-rounded"></iconify-icon>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <p class="title">Others</p>
-            <p class="desc">Move properties not the previous boring options?!</p>
-        </label>
+                <p class="title">Others</p>
+                <p class="desc">Move properties not the previous boring options?!</p>
+            </label>
     </div>
-
 
 </section>
 
@@ -68,42 +68,42 @@
     <div class="d-flex request__wrapper">
         <div class="request_form_fill mb-5">
             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" />
-                <label class="btn btn__secondary" for="btnradio1">1 Room</label>
+                    <input type="radio" value="room1" class="btn-check" asp-for="@Model.RbRoom" id="btnradio1" autocomplete="off" checked/>
+                    <label class="btn btn__secondary" asp-for="@Model.RbRoom" for="btnradio1">1 Room</label>
 
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" />
-                <label class="btn btn__secondary" for="btnradio2">2 Rooms</label>
+                    <input type="radio" value="room2" class="btn-check" asp-for="@Model.RbRoom" id="btnradio2" autocomplete="off" />
+                    <label class="btn btn__secondary" asp-for="@Model.RbRoom" for="btnradio2" >2 Rooms</label>
 
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" />
-                <label class="btn btn__secondary" for="btnradio3">3 Rooms</label>
+                <input type="radio" value="room3" class="btn-check" asp-for="@Model.RbRoom" id="btnradio3" autocomplete="off" />
+                        <label class="btn btn__secondary" asp-for="@Model.RbRoom" for="btnradio3">3 Rooms</label>
 
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off" />
-                <label class="btn btn__secondary" for="btnradio4">Above 3</label>
+                <input type="radio" value="room4" class="btn-check" asp-for="@Model.RbRoom" id="btnradio4" autocomplete="off" />
+                        <label class="btn btn__secondary" asp-for="@Model.RbRoom" for="btnradio4">Above 3</label>
 
-                <input type="radio" class="btn-check" name="btnradio" id="btnradioStudio" autocomplete="off" />
-                <label class="btn btn__secondary" for="btnradioStudio">Studio</label>
+                    <input type="radio" value="roomS" class="btn-check" asp-for="@Model.RbRoom" id="btnradioS" autocomplete="off" />
+                <label class="btn btn__secondary" asp-for="@Model.RbRoom" for="btnradioS"> Studio</label>
             </div>
 
             <div class="form__wrapper mt-5">
                  <div class="row g-3">
                     <h5 class="group-title">Origin •-----------------------------------› Destination</h5>
                     <div class="col-md-6 form-group">
-                        <label for="originState" class="form-label">Pickup State</label>
-                        <select id="originState" class="form-select">
+                            <label asp-for="@Model.PickupState" class="form-label">Pickup State</label>
+                            <select asp-for="@Model.PickupState" id="originState" class="form-select">
                             <option selected>Choose...</option>
                             <option>Lagos</option>
                         </select>
                     </div>
                     <div class="col-md-6 form-group">
-                        <label for="destiState" class="form-label">Dropoff State</label>
-                        <select id="destiState" class="form-select">
+                            <label asp-for="@Model.DropoffState" class="form-label">Dropoff State</label>
+                            <select asp-for="@Model.DropoffState" id="destiState" class="form-select">
                             <option selected>Choose...</option>
                             <option>Lagos</option>
                         </select>
                     </div>
                     <div class="col-md-6 form-group">
-                        <label for="originCity" class="form-label">Pickup City</label>
-                        <select id="originCity" class="form-select">
+                            <label asp-for="@Model.PickupCity" class="form-label">Pickup City</label>
+                        <select asp-for="@Model.PickupCity" id="originCity" class="form-select">
                             <option selected>Choose...</option>
                             <option>Ajah</option>
                             <option>Ikeja</option>
@@ -113,8 +113,8 @@
                         </select>
                     </div>
                     <div class="col-md-6 form-group">
-                        <label for="destiCity" class="form-label">Dropoff City</label>
-                        <select id="destiCity" class="form-select">
+                        <label asp-for="@Model.DropoffCity" class="form-label">Dropoff City</label>
+                            <select asp-for="@Model.DropoffCity" id="destiCity" class="form-select">
                             <option selected>Choose...</option>
                             <option>Ajah</option>
                             <option>Ikeja</option>
@@ -125,28 +125,24 @@
                     </div>
 
                     <div class="col-md-6 form-group">
-                        <label for="pickupAddr" class="form-label">Pickup Address</label>
-                        <input type="text" class='form-control' id="pickupAddr" placeholder="Street Address" required />
+                            <label asp-for="@Model.PickupAddress" class="form-label">Pickup Address</label>
+                        <input asp-for="@Model.PickupAddress" class='form-control' id="pickupAddr" placeholder="Street Address" required />
                     </div>
                     <div class="col-md-6 form-group">
-                        <label for="dropAddr" class="form-label">Dropoff Address</label>
-                        <input type="text" class='form-control' id="dropAddr" placeholder="Street Address" required />
+                            <label asp-for="@Model.DropoffAddress" class="form-label">Dropoff Address</label>
+                            <input asp-for="@Model.DropoffAddress" class='form-control' id="dropAddr" placeholder="Street Address" required />
+                    </div>
+                    <div class="col-md-12 form-group">
+                            <label asp-for="@Model.PickupDate" class="form-label">Date & Time</label>
+                            <input asp-for="@Model.PickupDate" class='form-control' id="pickupDate" name='setTodaysDate' required />
                     </div>
                     <div class="col-md-6 form-group">
-                        <label for="pickupDate" class="form-label">Date</label>
-                        <input type="date" class='form-control' id="pickupDate" name='setTodaysDate' required />
+                            <label asp-for="@Model.PickupFloor" class=" form-label">Pickup Floor</label>
+                            <input asp-for="@Model.PickupFloor" class='form-control' id="pickupFloor" required />
                     </div>
                     <div class="col-md-6 form-group">
-                        <label for="pickupTime" class="form-label">Time</label>
-                        <input type="time" class='form-control' id="pickupTime" required />
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label for="pickupFloor" class="form-label">Pickup Floor</label>
-                        <input type="number" class='form-control' id="pickupFloor" required />
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label for="dropoffFloor" class="form-label">Dropoff Floor</label>
-                        <input type="number" class='form-control' id="dropFloor" required />
+                            <label asp-for="@Model.DropoffFloor" class="form-label">Dropoff Floor</label>
+                            <input asp-for="@Model.DropoffFloor" class='form-control' id="dropFloor" required />
                     </div>
 
                     <div class="col-md-6">
@@ -157,6 +153,7 @@
                     </div>
                  </div>
             </div>
+        </div>
         </div>
 </form>
 
