@@ -17,8 +17,8 @@ namespace Movars.Core.Models
         public decimal TotalAmount { get; set; }
         public DateTime DateCreated { get; set; } = DateTime.Now;
 
-        public Mover? Mover { get; set; }
-        public Owner Owner { get; set; } = null!;
+        public ApplicationUser? Mover { get; set; }
+        public ApplicationUser Owner { get; set; } = null!;
         public RequestStatus RequestStatus { get; set; }
         public RequestType RequestType { get; set; }
 

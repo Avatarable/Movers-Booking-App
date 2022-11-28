@@ -27,9 +27,9 @@ namespace Movars.Core.Data.Repositories.Implementations
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<IEnumerable<Bid>> GetAllBidByMover(string id)
+        public async Task<IEnumerable<Bid>> GetAllBidsByMover(string moverId)
         {
-            return await _context.Bids.Where(x => x.Mover.Id == id).ToListAsync();
+            return await _context.Bids.Where(x => x.Mover.Id == moverId).ToListAsync();
         }
 
         public async Task<IEnumerable<Bid>> GetAllBids()

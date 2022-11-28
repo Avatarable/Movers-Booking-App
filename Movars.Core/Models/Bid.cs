@@ -16,7 +16,7 @@ namespace Movars.Core.Models
         public BidStatus Status { get; set; }
 
         [Required]
-        public Mover Mover { get; set; }
+        public ApplicationUser Mover { get; set; }
 
         [Required]
         public Request Request { get; set; }

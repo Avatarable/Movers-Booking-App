@@ -2,6 +2,7 @@
 @{
 }
 
+<form method="post" asp-action="Create">
 <section class="container request_form_wrapper">
     <h1 class="heavy__text mb-4">Select Type</h1>
     <div class="row types__wrapper gap-5">
@@ -67,7 +68,7 @@
     <div class="d-flex request__wrapper">
         <div class="request_form_fill mb-5">
             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked />
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" />
                 <label class="btn btn__secondary" for="btnradio1">1 Room</label>
 
                 <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" />
@@ -84,34 +85,42 @@
             </div>
 
             <div class="form__wrapper mt-5">
-                <form class="row g-3">
+                 <div class="row g-3">
                     <h5 class="group-title">Origin •-----------------------------------› Destination</h5>
                     <div class="col-md-6 form-group">
                         <label for="originState" class="form-label">Pickup State</label>
                         <select id="originState" class="form-select">
                             <option selected>Choose...</option>
-                            <option>...</option>
+                            <option>Lagos</option>
                         </select>
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="destiState" class="form-label">Dropoff State</label>
                         <select id="destiState" class="form-select">
                             <option selected>Choose...</option>
-                            <option>...</option>
+                            <option>Lagos</option>
                         </select>
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="originCity" class="form-label">Pickup City</label>
                         <select id="originCity" class="form-select">
                             <option selected>Choose...</option>
-                            <option>...</option>
+                            <option>Ajah</option>
+                            <option>Ikeja</option>
+                            <option>Ikoyi</option>
+                            <option>Surulere</option>
+                            <option>Victoria Island</option>
                         </select>
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="destiCity" class="form-label">Dropoff City</label>
                         <select id="destiCity" class="form-select">
                             <option selected>Choose...</option>
-                            <option>...</option>
+                            <option>Ajah</option>
+                            <option>Ikeja</option>
+                            <option>Ikoyi</option>
+                            <option>Surulere</option>
+                            <option>Victoria Island</option>
                         </select>
                     </div>
 
@@ -136,7 +145,7 @@
                         <input type="number" class='form-control' id="pickupFloor" required />
                     </div>
                     <div class="col-md-6 form-group">
-                        <label for="dropFloor" class="form-label">Dropoff Floor</label>
+                        <label for="dropoffFloor" class="form-label">Dropoff Floor</label>
                         <input type="number" class='form-control' id="dropFloor" required />
                     </div>
 
@@ -146,9 +155,10 @@
                     <div class="col-md-6 form-group">
                         <button class="btn bg__secondary text__light fw-bold w-100 btn_submit" type="submit">Submit Request</button>
                     </div>
-                </form>
+                 </div>
             </div>
         </div>
+</form>
 
         <div class="details brief">
             <p class="qTitle">Estimated Price</p>

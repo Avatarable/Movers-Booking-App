@@ -154,7 +154,6 @@ input[type="radio"][id^="rb"] {
 
 .details .anime {
     width: 100%;
-    max-height: 250px;
     margin-bottom: 25px;
     border-radius: 10px;
 }

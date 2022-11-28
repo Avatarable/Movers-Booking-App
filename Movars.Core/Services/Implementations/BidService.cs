@@ -24,9 +24,9 @@ namespace Movars.Core.Services.Implementations
             return (_bidRepo.DeleteBid(bid));
         }
 
-        public Task<IEnumerable<Bid>> GetAllBidByMover(string id)
+        public Task<IEnumerable<Bid>> GetAllBidByMover(string moverId)
         {
-            return _bidRepo.GetAllBidByMover(id);
+            return _bidRepo.GetAllBidsByMover(moverId);
         }
 
         public Task<IEnumerable<Bid>> GetAllBids()

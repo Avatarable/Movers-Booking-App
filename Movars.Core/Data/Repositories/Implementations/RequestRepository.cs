@@ -42,9 +42,9 @@ namespace Movars.Core.Data.Repositories.Implementations
             return await _context.Requests.Where(x => x.PickupDate == dateTime).ToListAsync();
         }
 
-        public async Task<IEnumerable<Request>> GetAllRequestsByOwner(Owner owner)
+        public async Task<IEnumerable<Request>> GetAllRequestsByOwner(string ownerId)
         {
-            return await _context.Requests.Where(x => x.Owner == owner).ToListAsync();
+            return await _context.Requests.Where(x => x.Owner.Id == ownerId).ToListAsync();
         }
 
         public async Task<IEnumerable<Request>> GetAllRequestsByStatus(RequestStatus status)

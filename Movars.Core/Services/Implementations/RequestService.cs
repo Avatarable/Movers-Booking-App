@@ -39,9 +39,9 @@ namespace Movars.Core.Services.Implementations
             return _requestRepo.GetAllRequestsByDate(dateTime);
         }
 
-        public Task<IEnumerable<Request>> GetAllRequestsByOwner(string id)
+        public Task<IEnumerable<Request>> GetAllRequestsByOwner(string ownerId)
         {
-            return _requestRepo.GetAllRequestsByOwner(id);
+            return _requestRepo.GetAllRequestsByOwner(ownerId);
         }
 
         public Task<IEnumerable<Request>> GetAllRequestsByStatus(RequestStatus status)

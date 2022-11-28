@@ -2,6 +2,7 @@ using Mailjet.Client;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Movars.Core.Data;
 using Movars.Core.Extensions;
 using Movars.Core.Helpers;
@@ -13,6 +14,8 @@ using System.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+//builder.Services.AddHttpContextAccessor();
+//builder.Services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));

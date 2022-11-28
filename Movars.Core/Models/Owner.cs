@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Movars.Core.Models
 {
-    public class Owner : IdentityUser
+    public class Owner
     {
         [Required]
         [StringLength(15, MinimumLength = 3, ErrorMessage = "Must be between 3 and 15")]
