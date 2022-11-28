@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Movars.Core.Models.Enums;
+using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 
 namespace Movars.Core.Models.ViewModels
 {
-    public class RegisterOwnerViewModel
+    public class RegisterViewModel
     {
         [StringLength(15, MinimumLength = 3, ErrorMessage = "Must be between 3 and 15")]
         public string? FirstName { get; set; }
@@ -33,13 +34,7 @@ namespace Movars.Core.Models.ViewModels
         [StringLength(15, MinimumLength = 3, ErrorMessage = "Must be between 3 and 15")]
         public string? CompanyName { get; set; }
         public string? BusinessRegNo { get; set; }
-        public RoleType Role { get; set; }
+        public RoleTypes Role { get; set; }
     }
-
-    public enum RoleType
-    {
-        Admin,
-        Owner,
-        Mover
-    }
+    
 }

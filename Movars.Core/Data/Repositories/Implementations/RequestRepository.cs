@@ -32,19 +32,19 @@ namespace Movars.Core.Data.Repositories.Implementations
             return await _context.Requests.Where(x => x.PickupAddress == address).ToListAsync();
         }
 
-        public Task<IEnumerable<Request>> GetAllRequests()
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<IEnumerable<Request>> GetAllRequestsByDate(DateTime dateTime)
+        public async Task<IEnumerable<Request>> GetAllRequests()
         {
             return await _context.Requests.ToListAsync();
         }
 
-        public Task<IEnumerable<Request>> GetAllRequestsByOwner(string id)
+        public async Task<IEnumerable<Request>> GetAllRequestsByDate(DateTime dateTime)
         {
-            throw new NotImplementedException();
+            return await _context.Requests.Where(x => x.PickupDate == dateTime).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Request>> GetAllRequestsByOwner(Owner owner)
+        {
+            return await _context.Requests.Where(x => x.Owner == owner).ToListAsync();
         }
 
         public async Task<IEnumerable<Request>> GetAllRequestsByStatus(RequestStatus status)

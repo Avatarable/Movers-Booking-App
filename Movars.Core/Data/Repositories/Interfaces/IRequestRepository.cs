@@ -8,7 +8,7 @@ namespace Movars.Core.Data.Repositories.Interfaces
         Task<bool> CreateRequest(Request request);
         Task<Request> GetRequestById(string id);
         Task<IEnumerable<Request>> GetAllRequests();
-        Task<IEnumerable<Request>> GetAllRequestsByOwner(string id);
+        Task<IEnumerable<Request>> GetAllRequestsByOwner(Owner owner);
         Task<IEnumerable<Request>> GetAllRequestsByDate(DateTime dateTime);
         Task<IEnumerable<Request>> GetAllRequestsByStatus(RequestStatus status);
         Task<IEnumerable<Request>> GetAllRequestsByType(RequestType type);

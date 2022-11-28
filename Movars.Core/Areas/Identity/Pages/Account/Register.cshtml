@@ -1,5 +1,5 @@
 ﻿@page
-@using Movars.Core.Models.ViewModels
+@using Movars.Core.Models.Enums
 @model RegisterModel
 @{
     ViewData["Title"] = "Register";
@@ -24,7 +24,7 @@
 		<div class="tab-content" id="myTabContent">
 			<form asp-route-returnUrl="@Model.ReturnUrl" method="post" id='register_owner' class="tab-pane fade show active" role="tabpanel" aria-labelledby="owner-tab">
 				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-				<input asp-for="Input.Role" value="@RoleType.Owner" aria-required="true" hidden />
+				<input asp-for="Input.Role" value="@RoleTypes.Owner" aria-required="true" hidden />
 				<div class="form-group">
 					<input asp-for="Input.FirstName" class='form-control' placeholder="First Name" aria-required="true" />
 					<iconify-icon icon="mingcute:user-3-line"></iconify-icon>
@@ -41,7 +41,7 @@
 					<span asp-validation-for="Input.Email" class="text-danger"></span>
 				</div>
 				<div class="form-group">
-					<input asp-for="Input.Password" class='form-control' id="registerPassword" placeholder="Password" aria-required="true" />
+					<input asp-for="Input.Password" class='form-control' placeholder="Password" aria-required="true" />
 					<iconify-icon icon="uil:padlock"></iconify-icon>
 					<span asp-validation-for="Input.Password" class="text-danger"></span>
 				</div>
@@ -55,7 +55,7 @@
 				</div>
 			</form>
 			<form asp-route-returnUrl="@Model.ReturnUrl" method="post" id='register_mover' class="tab-pane fade" role="tabpanel" aria-labelledby="mover-tab">
-				<input asp-for="Input.Role" value="@RoleType.Mover" aria-required="true" hidden />
+				<input asp-for="Input.Role" value="@RoleTypes.Mover" aria-required="true" hidden />
 					<div class="form-group">
 					<input asp-for="Input.CompanyName" class='form-control' placeholder="Company Name" aria-required="true" />
 						<iconify-icon icon="mingcute:user-3-line"></iconify-icon>
@@ -72,7 +72,7 @@
 					<span asp-validation-for="Input.Email" class="text-danger"></span>
 					</div>
 					<div class="form-group">
-					<input asp-for="Input.Password" class='form-control' id="registerPassword" placeholder="Password" aria-required="true" />
+					<input asp-for="Input.Password" class='form-control' placeholder="Password" aria-required="true" />
 						<iconify-icon icon="uil:padlock"></iconify-icon>
 					<span asp-validation-for="Input.Password" class="text-danger"></span>
 					</div>

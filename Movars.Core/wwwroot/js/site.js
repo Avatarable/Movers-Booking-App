@@ -1,4 +1,11 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿
+function activate(e) {
+    let requests = document.querySelectorAll(".request");   //get all requests
+    requests.forEach(x => x.classList.remove("active"));    //remove 'active' from all requests
 
-// Write your JavaScript code.
+    e.classList.add("active");  //add 'active' to current request
+
+    let details = document.querySelectorAll(".holder");   //get all details
+    details.forEach(x => x.classList.remove("show"))    //remove 'show' from all details
+    document.getElementById(e.id).classList.add("show");    //add 'show' to current detail
+};

@@ -1,6 +1,9 @@
 ﻿namespace Movars.Core.Models.Enums
 {
-	public enum RoleTypes
-	{
-	}
+    public enum RoleTypes
+    {
+        Admin,
+        Owner,
+        Mover
+    }
 }

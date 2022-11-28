@@ -163,6 +163,15 @@
     flex: 1;
     transition: all 0.2s ease-in;
 }
+
+.request__wrapper .details .holder {
+    display: none;
+}
+
+.request__wrapper .details .holder.show {
+    display: block;
+}
+
 .details .info__card {
     width: 100%;
     min-height: 250px;

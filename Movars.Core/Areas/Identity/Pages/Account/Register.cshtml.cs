@@ -22,6 +22,7 @@ using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using Movars.Core.Models;
 using Movars.Core.Models.DTOs;
+using Movars.Core.Models.Enums;
 using Movars.Core.Models.ViewModels;
 using Movars.Core.Services.Interfaces;
 using NuGet.Common;
@@ -37,7 +38,6 @@ namespace Movars.Core.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IConfiguration _config;
         private readonly IEmailSender _emailSender;
-        private readonly INotificationService _notify;
         private readonly IMailService _mailService;
 
         public RegisterModel(
@@ -47,7 +47,6 @@ namespace Movars.Core.Areas.Identity.Pages.Account
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
             IConfiguration config,
-            INotificationService notify,
             IMailService mailService)
         {
             _userManager = userManager;
@@ -57,13 +56,12 @@ namespace Movars.Core.Areas.Identity.Pages.Account
             _logger = logger;
             _emailSender = emailSender;
             _config = config;
-            _notify = notify;
             _mailService = mailService;
         }
 
 
         [BindProperty]
-        public RegisterOwnerViewModel Input { get; set; }
+        public RegisterViewModel Input { get; set; }
 
         public string ReturnUrl { get; set; }
 
@@ -77,7 +75,7 @@ namespace Movars.Core.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl ??= Url.Content("~/Dashboard");
+            returnUrl ??= Url.Content("~/dashboard");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
@@ -90,12 +88,12 @@ namespace Movars.Core.Areas.Identity.Pages.Account
                 user.UserName = Input.Email;
 
                 // Assign values based on roles
-                if(Input.Role == RoleType.Owner)
+                if(Input.Role == RoleTypes.Owner)
                 {
                     user.FirstName = Input.FirstName;
                     user.LastName = Input.LastName;
                 }
-                else if(Input.Role == RoleType.Mover)
+                else if(Input.Role == RoleTypes.Mover)
                 {
                     user.CompanyName = Input.CompanyName;
                     user.BusinessRegNo = Input.BusinessRegNo;

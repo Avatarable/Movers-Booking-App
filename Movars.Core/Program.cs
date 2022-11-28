@@ -6,6 +6,8 @@ using Movars.Core.Data;
 using Movars.Core.Extensions;
 using Movars.Core.Helpers;
 using Movars.Core.Models;
+using Movars.Core.Services.Implementations;
+using Movars.Core.Services.Interfaces;
 using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -31,10 +33,10 @@ builder.Services.AddHttpClient<IMailjetClient, MailjetClient>(client =>
         builder.Configuration.GetSection("MailJetKeys")["ApiSecret"]);
 });
 
-builder.Services.ConfigureServices();
-
 builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
+
+builder.Services.ConfigureServices();
 
 builder.Services.AddAuthorization(options =>
 {
@@ -49,6 +51,7 @@ builder.Services.AddScoped<Seeder>();
 
 var app = builder.Build();
 
+// create seeder object for seeding the db
 var scope = app.Services.CreateScope();
 var seeder = scope.ServiceProvider.GetRequiredService<Seeder>();
 
@@ -72,6 +75,7 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+// seeding the db
 await seeder.Seed(app.Environment.EnvironmentName);
 
 app.MapControllerRoute(
