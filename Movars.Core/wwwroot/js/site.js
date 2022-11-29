@@ -17,6 +17,26 @@ function activate(e, id) {
     console.log(document.querySelector("#delete__inp"));
 };
 
+
+function showDetails(e, id) {
+
+    let requests = document.querySelectorAll(".request");   //get all requests
+    requests.forEach(x => x.classList.remove("active"));    //remove 'active' from all requests
+    e.classList.add("active");  //add 'active' to current request
+
+
+    let details = document.querySelectorAll(".holder");   //get all details
+    details.forEach(x => x.classList.remove("show"))    //remove 'show' from all details
+
+    let el = document.getElementById(id);
+    el.classList.add("show");    //add 'show' to current detail
+
+    document.querySelector("#deleteRequest").removeAttribute("hidden");
+    document.querySelector("#delete__inp").setAttribute("value", id);
+    console.log(document.querySelector("#delete__inp"));
+};
+
+
 (function() {
     "use strict";
     const btn = document.getElementById("deleteRequest");

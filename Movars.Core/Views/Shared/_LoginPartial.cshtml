@@ -4,8 +4,11 @@
 @*@inject HttpContextAccessor httpContext*@
 
 
+
 @if (SignInManager.IsSignedIn(User))
 {
+    var user = await UserManager.GetUserAsync(Context.User);
+    var role = (await UserManager.GetRolesAsync(user)).FirstOrDefault();
 
     <div class="d-flex gap-3 align-items-center">
         <div class="notif-icon">
@@ -20,7 +23,11 @@
                 </div>
                 <div class="info">
                     @*<p class="name">@UserManager.GetUserAsync(httpContext.HttpContext.User)</p>*@
-                    <p class="name">@User.Identity?.Name</p>
+                    @if(role == "Owner"){
+                        <p class="name">@user.FirstName @user.LastName</p>
+                    }else if(role == "Mover"){
+                        <p class="name">@user.CompanyName</p>
+                    }
                     <p class="role">@User.Identities.SelectMany(i => i.Claims.Where(c => c.Type == i.RoleClaimType).Select(c => c.Value).ToList()).FirstOrDefault()</p>
                 </div>
             </div>
@@ -37,9 +44,11 @@
                     </a>
                 </li>
                 <li>
-                    <a class="dropdown-item d-flex align-items-center" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Login", "Account", new { area = "Identity" })">
-                        <iconify-icon icon="ph:truck"></iconify-icon>Logout
-                    </a>
+                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Logout", new { area = "Identity" })" method="post">
+                        <button class="dropdown-item d-flex align-items-center" type="submit">
+                            <iconify-icon icon="ph:truck"></iconify-icon>Logout
+                        </button>                        
+                    </form>
                 </li>
             </ul>
         </div>

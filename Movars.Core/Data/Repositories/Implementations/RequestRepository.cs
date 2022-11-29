@@ -29,17 +29,20 @@ namespace Movars.Core.Data.Repositories.Implementations
 
         public async Task<IEnumerable<Request>> GetAllRequestsByAddress(Address address)
         {
-            return await _context.Requests.Where(x => x.PickupAddress == address).ToListAsync();
+            return await _context.Requests.Include(x => x.PickupAddress).Include(x => x.DeliveryAddress)
+                .Where(x => x.PickupAddress == address).ToListAsync();
         }
 
         public async Task<IEnumerable<Request>> GetAllRequests()
         {
-            return await _context.Requests.ToListAsync();
+            return await _context.Requests.Include(x => x.PickupAddress).Include(x => x.DeliveryAddress)
+                .ToListAsync();
         }
 
         public async Task<IEnumerable<Request>> GetAllRequestsByDate(DateTime dateTime)
         {
-            return await _context.Requests.Where(x => x.PickupDate == dateTime).ToListAsync();
+            return await _context.Requests.Include(x => x.PickupAddress).Include(x => x.DeliveryAddress)
+                .Where(x => x.PickupDate == dateTime).ToListAsync();
         }
 
         public async Task<IEnumerable<Request>> GetAllRequestsByOwner(string ownerId)
@@ -50,17 +53,20 @@ namespace Movars.Core.Data.Repositories.Implementations
 
         public async Task<IEnumerable<Request>> GetAllRequestsByStatus(RequestStatus status)
         {
-            return await _context.Requests.Where(x => x.RequestStatus == status).ToListAsync();
+            return await _context.Requests.Include(x => x.PickupAddress).Include(x => x.DeliveryAddress)
+                .Where(x => x.RequestStatus == status).ToListAsync();
         }
 
         public async Task<IEnumerable<Request>> GetAllRequestsByType(RequestType type)
         {
-            return await _context.Requests.Where(x => x.RequestType == type).ToListAsync();
+            return await _context.Requests.Include(x => x.PickupAddress).Include(x => x.DeliveryAddress)
+                .Where(x => x.RequestType == type).ToListAsync();
         }
 
         public async Task<Request> GetRequestById(string id)
         {
-            return await _context.Requests.FirstOrDefaultAsync(x => x.Id == id);
+            return await _context.Requests.
+                Include(x => x.PickupAddress).Include(x => x.DeliveryAddress).FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<bool> UpdateRequest(Request request)

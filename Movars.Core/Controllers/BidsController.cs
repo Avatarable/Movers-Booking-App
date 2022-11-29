@@ -14,7 +14,7 @@ using Movars.Core.Services.Interfaces;
 
 namespace Movars.Core.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin, Owner")]
     public class BidsController : Controller
     {
         private readonly IBidService _bidService;
@@ -62,18 +62,20 @@ namespace Movars.Core.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(decimal amount, string requestId)
         {
+            Bid bid = new Bid();
             if (ModelState.IsValid)
             {
-                var bid = new Bid
+                bid = new Bid
                 {
                     Amount = amount,
                     Status = BidStatus.Rejected,
                     Mover = await _userManager.GetUserAsync(HttpContext.User),
                     Request = await _requestService.GetRequestById(requestId),
                 };
-                return RedirectToAction(nameof(Index));
+                await _bidService.AddBid(bid);
+                return RedirectToAction("Index", "Dashboard");
             }
-            return View(amount);
+            return RedirectToAction("Index", "Dashboard", bid);
         }
 
         // GET: Bids/Edit/5

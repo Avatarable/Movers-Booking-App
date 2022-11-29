@@ -98,6 +98,9 @@
 .request__wrapper .request__list {
     flex: 1;
 }
+.request__wrapper .request__list.extend {
+    flex: 2;
+}
 
 .request__list .actions {
     position: sticky;
@@ -164,6 +167,11 @@
     position: absolute;
     top: 35%;
     right: 20px;
+}
+
+.request__table .point_right iconify-icon {
+    color: var(--gray);
+    font-size: 1.5rem;
 }
 
 
@@ -265,7 +273,36 @@
 }
 
 
-@media only screen and (min-width: 760px){
+.request__wrapper .switch__btn {
+    color: var(--dusty-navy);
+}
+
+    .request__wrapper .switch__btn.active {
+        background-color: var(--dusty-navy);
+        color: var(--beige);
+    }
+
+.request__table .tb_row {
+    color: var(--gray);
+}
+.request__table .tb_row.active {
+    background-color: var(--gray-light);
+}
+
+.bids__list .place_bid {
+    gap: 10px;
+}
+
+.bids__list .place_bid input {
+    flex: 1.5;
+}
+.bids__list .place_bid button {
+    flex: 1;
+}
+
+
+
+@media only screen and (min-width: 760px) {
     .request__wrapper {
         flex-direction: row;
     }

@@ -1,73 +1,121 @@
-﻿@{
+﻿@using Movars.Core.Models.Enums
+@model Bid
+@{
     var requests = (IEnumerable<Request>)ViewData["requests"]!;
     var bids = (IEnumerable<Bid>)ViewData["bids"]!;
 }
 
 
-@*----- OWNER DASHBOARD ------*@
+@*----- MOVER DASHBOARD ------*@
 <section class="container">
     <div class="d-flex request__wrapper">
-        <div class="request__list">
-            <div class="actions d-flex gap-3 mb-4">
-                <a asp-action="NewRequest" class='btn btn__secondary_filled new_link'>New</a>
-                <button id="deleteRequest" class='btn btn__danger' hidden="hidden">Delete</button>
-                <form asp-controller="Request" asp-action="Delete" class="delete__wrap" method="post" asp-route-id="" hidden="hidden">
-                </form>
-            </div>
+        <div class="request__list extend">
 
-            @*----map----*@
-            @{
-                foreach (var request in (requests ?? new List<Request>()))
-                {
-                    <div class="request" role="button" onclick="activate(this, '@request.Id')">
-                        <p class="title">Want to move @request.RoomsCount Room</p>
-                        <p class="route">From @request.PickupAddress!.City to @request.DeliveryAddress!.City</p>
-                        <iconify-icon icon="material-symbols:arrow-forward-ios-rounded"></iconify-icon>
-                    </div>
-                }
-            }
+            <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+			    <li class="nav-item" role="presentation">
+				    <button class="nav-link active switch__btn" id="upcoming-tab" data-bs-toggle="tab" data-bs-target="#upcoming_requests" type="button" role="tab" aria-controls="upcoming" aria-selected="true">Upcoming Request</button>
+			    </li>
+			    <li class="nav-item" role="presentation">
+				    <button class="nav-link switch__btn" id="ongoing-tab" data-bs-toggle="tab" data-bs-target="#ongoing_bids" type="button" role="tab" aria-controls="ongoing" aria-selected="false">Ongoing Bids</button>
+			    </li>
+		    </ul>
+            <div class="tab-content w-100" id="myTabContent">
+                <div id='upcoming_requests' class="request__table w-100 tab-pane fade show active" role="tabpanel" aria-labelledby="upcoming-tab">
+                    @{
+                        if (requests.ToList().Count > 0)
+                        {
+                            <table class="table table-hover">
+                                <tbody>
+                                    @foreach (var request in (requests ?? new List<Request>()))
+                                        {
+                                        <tr class="tb_row" onclick="showDetails(this, '@request.Id')">
+                                            <td>Want to move @request.RoomsCount Room(S).</td>
+                                            <td> From @request.PickupAddress!.City to @request.DeliveryAddress!.City</td>
+                                            <td class="point_right"><iconify-icon icon="material-symbols:arrow-right-alt-rounded"></iconify-icon></td>
+                                        </tr>
+                                        }
+                                </tbody>
+                            </table>
+                        }
+                        else{
+                            <div>
+                                <p class="fw-bold">Request list empty</p>
+                            </div>
+                        }
+                    }
+                </div>
 
-            @*-------------*@
 
+                <div id='ongoing_bids' class="request__table w-100 tab-pane fade" role="tabpanel" aria-labelledby="ongoing-tab">
+                    @{
+                        if (bids.ToList().Count > 0)
+                        {
+                            <table class="table table-hover">
+                                <tbody>
+                                    @foreach (var bid in (bids ?? new List<Bid>()))
+                                        {
+                                        <tr class="tb_row" onclick="showDetails(this, '@bid.Id')">
+                                            <td>Want to move @bid.Request.RoomsCount Room(s). From @bid.Request.PickupAddress!.City to @bid.Request.DeliveryAddress!.City</td>
+                                            <td><strong>Bid Amount: </strong>@bid.Amount</td>
+                                            <td class="point_right">
+                                                @if(bid.Status.Equals(BidStatus.Accepted)){
+                                                    <span class="badge text-bg-success">Accepted</span>
+                                                } else {
+                                                    <span class="badge text-bg-warning">Pending</span>
+                                                }
+                                            </td>
+                                        </tr>
+                                        }
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <div>
+                                <p class="fw-bold data_none">You have no bids</p>
+                            </div>
+                        }
+                    }
+                </div>
+
+
+
+            </div>      
         </div>
 
+
         <div class="details">
-
-
             @{
                 foreach (var request in (requests ?? new List<Request>()))
                 {
-                    <div class="holder" id="@request.Id">
-                        <div class="info__card d-flex flex-column justify-content-between">
-                            <div class="overlay-dark"></div>
-                            <p class="title align-self-baseline">Want to move @request.RoomsCount Room</p>
-                            <div>
-                                <p class='detail'>Details</p>
-                                <p class="note align-self-end">The booking for relocation on @request.PickupDate.ToLongDateString() .<br /> From @request.PickupAddress!.City to @request.DeliveryAddress!.City.</p>
-                            </div>
-                        </div>
-                        <div class="bids__card">
-                            <p class="title">Receiving Bids</p>
-                            <div class="bids__list">
-                                @*----map----*@
-                                <div class="bid d-flex">
-                                    <div class="info">
-                                        <p class="amount">₦20000</p>
-                                        <p class="mover">ABC Movers Ltd.</p>
-                                    </div>
-                                    <div class="action d-flex align-items-center gap-4">
-                                        <div class="rating">
-                                            <iconify-icon icon="ic:round-star"></iconify-icon>
-                                            <iconify-icon icon="ic:round-star"></iconify-icon>
-                                            <iconify-icon icon="ic:round-star"></iconify-icon>
-                                        </div>
-                                        <button class="btn btn__select">Select</button>
-                                    </div>
+                        <div class="holder" id="@request.Id">
+                            <div class="info__card d-flex flex-column justify-content-between">
+                                <div class="overlay-dark"></div>
+                                <p class="title align-self-baseline">Want to move @request.RoomsCount Room</p>
+                                <div>
+                                    <p class='detail'>Details</p>
+                                    <p class="note align-self-end">The booking for relocation on @request.PickupDate.ToLongDateString() .<br /> From @request.PickupAddress!.City to @request.DeliveryAddress!.City.</p>
                                 </div>
-                                @*-----------*@
+                            </div>
+                            <div class="bids__card">
+                                <p class="title">Place Bid for Request</p>
+                                <div class="bids__list">
+                                    @*----map----*@
+                                    <div class="bid d-flex">
+                                        <div class="action w-100 align-items-center gap-4">
+                                            <form method="post" asp-controller="Bids" asp-action="Create">
+                                              <div class="col-md-12 form-group d-flex place_bid">
+                                                <input asp-for="@Model.Amount" class='form-control' placeholder="Your Bid Amount" required />
+                                               <button class="btn btn__select" type="submit">Submit</button>
+                                            </div>
+                                                <input asp-for="@Model.Request.Id" name="requestId" value="@request.Id" hidden/>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    @*-----------*@
+                                </div>
                             </div>
                         </div>
-                    </div>
                 }
             }
         </div>

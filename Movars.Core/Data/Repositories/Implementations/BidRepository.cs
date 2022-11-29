@@ -29,27 +29,32 @@ namespace Movars.Core.Data.Repositories.Implementations
 
         public async Task<IEnumerable<Bid>> GetAllBidsByMover(string moverId)
         {
-            return await _context.Bids.Where(x => x.Mover.Id == moverId).ToListAsync();
+            return await _context.Bids.Include(b =>b.Request).Include(u => u.Mover)
+                .Where(x => x.Mover.Id == moverId).ToListAsync();
         }
 
         public async Task<IEnumerable<Bid>> GetAllBids()
         {
-            return await _context.Bids.ToListAsync();
+            return await _context.Bids.Include(b => b.Request).Include(u => u.Mover)
+                .ToListAsync();
         }
 
         public async Task<IEnumerable<Bid>> GetAllBidsByDate(DateTime dateTime)
         {
-            return await _context.Bids.Where(x => x.DateCreated == dateTime).ToListAsync();
+            return await _context.Bids.Include(b => b.Request).Include(u => u.Mover)
+                .Where(x => x.DateCreated == dateTime).ToListAsync();
         }
 
         public async Task<IEnumerable<Bid>> GetAllBidsByStatus(BidStatus status)
         {
-            return await _context.Bids.Where(x => x.Status == status).ToListAsync();
+            return await _context.Bids.Include(b => b.Request).Include(u => u.Mover)
+                .Where(x => x.Status == status).ToListAsync();
         }
 
         public async Task<Bid> GetBidById(string id)
         {
-            return await _context.Bids.FirstOrDefaultAsync(x => x.Id == id);
+            return await _context.Bids.Include(u => u.Mover)
+                .Include(b => b.Request).FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<bool> UpdateBid(Bid bid)

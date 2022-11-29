@@ -42,14 +42,17 @@ namespace Movars.Core.Controllers
 			{
 				bids = await _bidService.GetAllBidByMover(user.Id);
 				requests = (user.Address != null) ? await _requestService.GetAllRequestsByAddress(user.Address) : await _requestService.GetAllRequests();
-				
-				return View("Mover");
+                ViewData["requests"] = requests;
+				ViewData["bids"] = bids;
+                return View("Mover");
 			}
 
 			requests = await _requestService.GetAllRequestsByOwner(user.Id);			
 			ViewData["requests"] = requests;
-			ViewData["bids"] = (await _bidService.GetAllBids())
-				.Where(b => requests.Contains(b.Request));
+			var allBids = await _bidService.GetAllBids();
+			bids = allBids.Where(b => requests.Contains(b.Request));
+
+			ViewData["bids"] = bids;
 
             return View();
 		}
