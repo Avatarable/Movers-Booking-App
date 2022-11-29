@@ -29,7 +29,14 @@
                                     @foreach (var request in (requests ?? new List<Request>()))
                                         {
                                         <tr class="tb_row" onclick="showDetails(this, '@request.Id')">
-                                            <td>Want to move @request.RoomsCount Room(S).</td>
+                                            @if (request.RoomsCount == 0)
+                                            {
+                                                <td>Want to move a Studio Room</td>
+                                            }
+                                            else
+                                            {
+                                                <td>Want to move @request.RoomsCount Room(s)</td>
+                                            }
                                             <td> From @request.PickupAddress!.City to @request.DeliveryAddress!.City</td>
                                             <td class="point_right"><iconify-icon icon="material-symbols:arrow-right-alt-rounded"></iconify-icon></td>
                                         </tr>
@@ -105,7 +112,7 @@
                                         <div class="action w-100 align-items-center gap-4">
                                             <form method="post" asp-controller="Bids" asp-action="Create">
                                               <div class="col-md-12 form-group d-flex place_bid">
-                                                <input asp-for="@Model.Amount" class='form-control' placeholder="Your Bid Amount" required />
+                                                <input asp-for="@Model.Amount" class="form-control" onkeydown="return keyispressed(event);" placeholder="Your Bid Amount" required />
                                                <button class="btn btn__select" type="submit">Submit</button>
                                             </div>
                                                 <input asp-for="@Model.Request.Id" name="requestId" value="@request.Id" hidden/>

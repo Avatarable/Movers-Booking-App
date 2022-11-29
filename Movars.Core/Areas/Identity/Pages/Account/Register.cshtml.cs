@@ -131,22 +131,22 @@ namespace Movars.Core.Areas.Identity.Pages.Account
                     //uriBuilder.Query = query.ToString();
                     //var urlString = uriBuilder.ToString();
 
-                    var firstName = user.FirstName;
-                    var placeholders = new Dictionary<string, string>
-                    {
-                        ["{Message}"] = "Thank you for signing up. To get started, you need to confirm your email. Please click on the button below to continue.",
-                        ["{Link}"] = callbackUrl,
-                        ["{FirstName}"] = char.ToUpper(firstName[0]) + firstName.Substring(1)
-                    };
-                    var mail = new EmailMessage
-                    {
-                        Subject = "Email Confirmation",
-                        Template = "ConfirmEmail",
-                        PlainTextMessage = "Thank you for signing up. To get started, you need to confirm your email. Please click the link below to continue.",
-                        ToEmail = new List<string> { user.Email },
-                        PlaceHolders = placeholders
-                    };
-                    await _mailService.SendMailAsync(mail);
+                    //var firstName = user.FirstName;
+                    //var placeholders = new Dictionary<string, string>
+                    //{
+                    //    ["{Message}"] = "Thank you for signing up. To get started, you need to confirm your email. Please click on the button below to continue.",
+                    //    ["{Link}"] = callbackUrl,
+                    //    ["{FirstName}"] = char.ToUpper(firstName[0]) + firstName.Substring(1)
+                    //};
+                    //var mail = new EmailMessage
+                    //{
+                    //    Subject = "Email Confirmation",
+                    //    Template = "ConfirmEmail",
+                    //    PlainTextMessage = "Thank you for signing up. To get started, you need to confirm your email. Please click the link below to continue.",
+                    //    ToEmail = new List<string> { user.Email },
+                    //    PlaceHolders = placeholders
+                    //};
+                    //await _mailService.SendMailAsync(mail);
 
                     // Send an email to this new user to the email provided using a notification service
 
@@ -157,8 +157,7 @@ namespace Movars.Core.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        return LocalRedirect(returnUrl);
+                        return RedirectToPage("Login");
                     }
                 }
                 foreach (var error in result.Errors)

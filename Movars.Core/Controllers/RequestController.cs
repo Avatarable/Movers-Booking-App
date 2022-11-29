@@ -46,7 +46,7 @@ namespace Movars.Core.Controllers
             if (ModelState.IsValid)
             {
                 var type = RequestType.Home;
-                switch (data.RbRoom)
+                switch (data.RbType)
                 {
                     case "home":
                         type = RequestType.Home;

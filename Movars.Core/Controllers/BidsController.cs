@@ -14,7 +14,7 @@ using Movars.Core.Services.Interfaces;
 
 namespace Movars.Core.Controllers
 {
-    [Authorize(Roles = "Admin, Owner")]
+    [Authorize]
     public class BidsController : Controller
     {
         private readonly IBidService _bidService;
@@ -29,6 +29,7 @@ namespace Movars.Core.Controllers
         }
 
         // GET: Bids
+        [Authorize(Roles = "Mover")]
         public async Task<IActionResult> Index()
         {
               return View(await _bidService.GetAllBids());

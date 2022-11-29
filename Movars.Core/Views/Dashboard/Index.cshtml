@@ -1,4 +1,5 @@
-﻿
+﻿@using Movars.Core.Models.Enums
+
 @{
     var requests = (IEnumerable<Request>)ViewData["requests"]!;
     var bids = (IEnumerable<Bid>)ViewData["bids"]!;
@@ -23,7 +24,12 @@
                     @foreach(var request in (requests ?? new List<Request>()))
                     {
                         <div class="request" role="button" onclick="activate(this, '@request.Id')">
-                            <p class="title">Want to move @request.RoomsCount Room</p>
+                            @if(request.RoomsCount == 0){
+                                <p class="title">Want to move a Studio Room</p>
+                            }
+                            else{
+                                <p class="title">Want to move @request.RoomsCount Room</p>
+                            }
                             <p class="route">From @request.PickupAddress!.City to @request.DeliveryAddress!.City</p>
                             <iconify-icon icon="material-symbols:arrow-forward-ios-rounded"></iconify-icon>
                         </div>
@@ -62,6 +68,9 @@
                                     <div class="info">
                                         <p class="amount">₦@bid.Amount</p>
                                         <p class="mover">@bid.Mover.CompanyName</p>
+                                        @if(bid.Mover.PhoneNumber != null) {
+                                            <p class="text-muted">@bid.Mover.PhoneNumber</p>
+                                        }
                                     </div>
                                     <div class="action d-flex align-items-center gap-4">
                                         <div class="rating">
@@ -74,7 +83,16 @@
                                                 }
                                             }
                                         </div>
-                                        <button class="btn btn__select">Select</button>
+                                        <form asp-controller="Owner" asp-action="SelectBid" method="post">
+                                            <input name="requestId" value="@request.Id" hidden />
+                                            <input name="bidId" value="@bid.Id" hidden />
+                                            <input name="moverId" value="@bid.Mover.Id" hidden />
+                                            @if(bid.Status == BidStatus.Accepted){
+                                                <button class="btn text__light bg__dusty_green btn__disable" type="submit">Selected</button>
+                                            }else {
+                                                <button class="btn btn__select" type="submit">Select</button>
+                                            }
+                                        </form>
                                     </div>
                                 </div>
                             }

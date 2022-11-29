@@ -17,10 +17,17 @@ function activate(e, id) {
     console.log(document.querySelector("#delete__inp"));
 };
 
+function keyispressed(e) {
+    var charValue = String.fromCharCode(e.keyCode);
+    if ((isNaN(charValue)) && (e.which != 8)) { // BSP KB code is 8
+        e.preventDefault();
+    }
+    return true;
+}
 
 function showDetails(e, id) {
 
-    let requests = document.querySelectorAll(".request");   //get all requests
+    let requests = document.querySelectorAll(".tb_row");   //get all requests
     requests.forEach(x => x.classList.remove("active"));    //remove 'active' from all requests
     e.classList.add("active");  //add 'active' to current request
 
