@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Movars.Core.Data;
 using Movars.Core.Models;
+using Movars.Core.Models.Enums;
 using Movars.Core.Services.Interfaces;
 
 namespace Movars.Core.Controllers
@@ -16,10 +18,14 @@ namespace Movars.Core.Controllers
     public class BidsController : Controller
     {
         private readonly IBidService _bidService;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IRequestService _requestService;
 
-        public BidsController(IBidService bidService)
+        public BidsController(IBidService bidService, UserManager<ApplicationUser> userManager, IRequestService requestService)
         {
             _bidService = bidService;
+            _userManager = userManager;
+            _requestService = requestService;
         }
 
         // GET: Bids
@@ -52,17 +58,22 @@ namespace Movars.Core.Controllers
         }
 
         // POST: Bids/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Amount,DateCreated,Status")] Bid bid)
+        public async Task<IActionResult> Create(decimal amount, string requestId)
         {
             if (ModelState.IsValid)
             {
+                var bid = new Bid
+                {
+                    Amount = amount,
+                    Status = BidStatus.Rejected,
+                    Mover = await _userManager.GetUserAsync(HttpContext.User),
+                    Request = await _requestService.GetRequestById(requestId),
+                };
                 return RedirectToAction(nameof(Index));
             }
-            return View(bid);
+            return View(amount);
         }
 
         // GET: Bids/Edit/5

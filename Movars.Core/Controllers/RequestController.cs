@@ -99,28 +99,41 @@ namespace Movars.Core.Controllers
         }
 
         // GET: RequestController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(string id)
         {
-            return View();
+            var request = await _requestService.GetRequestById(id);
+            if (request == null) return RedirectToAction("Index", "Dashboard");
+
+            // check if request has a mover
+            if(request.Mover != null)
+            {
+                ViewBag.Message = "Cannot edit a Request you have accepted bid for";
+                return RedirectToAction("Index", "Dashboard");
+            }
+
+            // edit request
+            return View(request);
         }
 
         // POST: RequestController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> Edit(IFormCollection collection)
         {
+            var request = collection as Request;
             try
             {
-                return RedirectToAction(nameof(Index));
+                await _requestService.UpdateRequest(request);
+                return RedirectToAction("Index", "Dashboard");
             }
             catch
             {
-                return View();
+                return View(request);
             }
         }
 
         // GET: RequestController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete()
         {
             return View();
         }
@@ -128,16 +141,24 @@ namespace Movars.Core.Controllers
         // POST: RequestController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<ActionResult> Delete(string id, IFormCollection collection)
         {
-            try
+            if(ModelState != null)
             {
-                return RedirectToAction(nameof(Index));
+                try{
+                    var request = await _requestService.GetRequestById(id);
+                    if(request != null)
+                    {
+                        await _requestService.DeleteRequest(request);
+                    }
+                    
+                }
+                catch
+                {
+                    return RedirectToAction("Index", "Dashboard");
+                }
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index", "Dashboard");
         }
     }
 }

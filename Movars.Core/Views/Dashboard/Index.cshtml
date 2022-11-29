@@ -7,12 +7,14 @@
 
 @*----- OWNER DASHBOARD ------*@
 <section class="container">
-        <div class="d-flex request__wrapper">        
+        <div class="d-flex request__wrapper">
             <div class="request__list">
                 <div class="actions d-flex gap-3 mb-4">
                     <a asp-action="NewRequest" class='btn btn__secondary_filled new_link'>New</a>
-                    @if(requests.ToList().Count > 0){<button class='btn btn__danger'>Delete</button>}
-                    else {<button class='btn btn__danger' hidden>Delete</button>}                    
+                    <button id="deleteRequest" class='btn btn__danger' hidden="hidden">Delete</button>
+                <form asp-controller="Request" asp-action="Delete" class="delete__wrap" method="post" hidden="hidden">
+                    <input name="id" id="delete__inp"  value="" />
+                    </form>              
                 </div>
 
             @*----map----*@
@@ -43,7 +45,7 @@
                                 <p class="title align-self-baseline">Want to move @request.RoomsCount Room</p>
                                 <div>
                                     <p class='detail'>Details</p>
-                                    <p class="note align-self-end">The booking for relocation on @request.PickupDate.Date. From @request.PickupAddress!.City to @request.DeliveryAddress!.City.</p>
+                                <p class="note align-self-end">The booking for relocation on @request.PickupDate.ToLongDateString() .<br/> From @request.PickupAddress!.City to @request.DeliveryAddress!.City.</p>
                                 </div>
                             </div>
                             <div class="bids__card">

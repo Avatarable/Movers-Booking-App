@@ -1,5 +1,75 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    var requests = (IEnumerable<Request>)ViewData["requests"]!;
+    var bids = (IEnumerable<Bid>)ViewData["bids"]!;
 }
+
+
+@*----- OWNER DASHBOARD ------*@
+<section class="container">
+    <div class="d-flex request__wrapper">
+        <div class="request__list">
+            <div class="actions d-flex gap-3 mb-4">
+                <a asp-action="NewRequest" class='btn btn__secondary_filled new_link'>New</a>
+                <button id="deleteRequest" class='btn btn__danger' hidden="hidden">Delete</button>
+                <form asp-controller="Request" asp-action="Delete" class="delete__wrap" method="post" asp-route-id="" hidden="hidden">
+                </form>
+            </div>
+
+            @*----map----*@
+            @{
+                foreach (var request in (requests ?? new List<Request>()))
+                {
+                    <div class="request" role="button" onclick="activate(this, '@request.Id')">
+                        <p class="title">Want to move @request.RoomsCount Room</p>
+                        <p class="route">From @request.PickupAddress!.City to @request.DeliveryAddress!.City</p>
+                        <iconify-icon icon="material-symbols:arrow-forward-ios-rounded"></iconify-icon>
+                    </div>
+                }
+            }
+
+            @*-------------*@
+
+        </div>
+
+        <div class="details">
+
+
+            @{
+                foreach (var request in (requests ?? new List<Request>()))
+                {
+                    <div class="holder" id="@request.Id">
+                        <div class="info__card d-flex flex-column justify-content-between">
+                            <div class="overlay-dark"></div>
+                            <p class="title align-self-baseline">Want to move @request.RoomsCount Room</p>
+                            <div>
+                                <p class='detail'>Details</p>
+                                <p class="note align-self-end">The booking for relocation on @request.PickupDate.ToLongDateString() .<br /> From @request.PickupAddress!.City to @request.DeliveryAddress!.City.</p>
+                            </div>
+                        </div>
+                        <div class="bids__card">
+                            <p class="title">Receiving Bids</p>
+                            <div class="bids__list">
+                                @*----map----*@
+                                <div class="bid d-flex">
+                                    <div class="info">
+                                        <p class="amount">₦20000</p>
+                                        <p class="mover">ABC Movers Ltd.</p>
+                                    </div>
+                                    <div class="action d-flex align-items-center gap-4">
+                                        <div class="rating">
+                                            <iconify-icon icon="ic:round-star"></iconify-icon>
+                                            <iconify-icon icon="ic:round-star"></iconify-icon>
+                                            <iconify-icon icon="ic:round-star"></iconify-icon>
+                                        </div>
+                                        <button class="btn btn__select">Select</button>
+                                    </div>
+                                </div>
+                                @*-----------*@
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
