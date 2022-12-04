@@ -39,11 +39,11 @@
                     <div>
                         <p class="fw-bold data-none">Request list empty</p>
                     </div>
-                }          
-                                
+                }                                          
             @*-------------*@
-
             </div>
+
+            <div class="vl"></div>
 
              <div class="details">
 
@@ -61,46 +61,61 @@
                     <div class="bids__card">
                         <p class="title">Receiving Bids</p>
                         <div class="bids__list">
-                            @*----map----*@
-                            @foreach(var bid in bids.Where(b => b.Request.Id == request.Id))
+
+                            @if (bids.Where(b => b.Request.Id == request.Id).ToList().Count > 0)
                             {
-                                <div class="bid d-flex">
-                                    <div class="info">
-                                        <p class="amount">₦@bid.Amount</p>
-                                        <p class="mover">@bid.Mover.CompanyName</p>
-                                        @if(bid.Mover.PhoneNumber != null) {
-                                            <p class="text-muted">@bid.Mover.PhoneNumber</p>
-                                        }
-                                    </div>
-                                    <div class="action d-flex align-items-center gap-4">
-                                        <div class="rating">
-                                            @if(bid.Mover.Rating == 0){
-                                                <iconify-icon icon="ic:round-star"></iconify-icon>
-                                            }
-                                            else{
-                                                for(int i=0; i<bid.Mover.Rating; i++){
-                                                    <iconify-icon icon="ic:round-star"></iconify-icon>
-                                                }
+                                @*----map----*@
+                                @foreach(var bid in bids.Where(b => b.Request.Id == request.Id))
+                                {
+                                    <div class="bid d-flex">
+                                        <div class="info">
+                                            <p class="amount">₦@bid.Amount</p>
+                                            <p class="mover">@bid.Mover.CompanyName</p>
+                                            @if(bid.Mover.PhoneNumber != null) {
+                                                <p class="text-muted">@bid.Mover.PhoneNumber</p>
                                             }
                                         </div>
-                                        <form asp-controller="Owner" asp-action="SelectBid" method="post">
-                                            <input name="requestId" value="@request.Id" hidden />
-                                            <input name="bidId" value="@bid.Id" hidden />
-                                            <input name="moverId" value="@bid.Mover.Id" hidden />
-                                            @if(bid.Status == BidStatus.Accepted){
-                                                <button class="btn text__light bg__dusty_green btn__disable" type="submit">Selected</button>
-                                            }else {
-                                                <button class="btn btn__select" type="submit">Select</button>
-                                            }
-                                        </form>
+                                        <div class="action d-flex align-items-center gap-4">
+                                            <div class="rating">
+                                                @if(bid.Mover.Rating == 0){
+                                                    <iconify-icon icon="ic:round-star"></iconify-icon>
+                                                }
+                                                else{
+                                                    for(int i=0; i<bid.Mover.Rating; i++){
+                                                        <iconify-icon icon="ic:round-star"></iconify-icon>
+                                                    }
+                                                }
+                                            </div>
+                                            <form asp-controller="Owner" asp-action="SelectBid" method="post">
+                                                <input name="requestId" value="@request.Id" hidden />
+                                                <input name="bidId" value="@bid.Id" hidden />
+                                                <input name="moverId" value="@bid.Mover.Id" hidden />
+                                                @if(bid.Status == BidStatus.Accepted){
+                                                    <button class="btn text__light bg__dusty_green btn__disable" type="submit">Selected</button>
+                                                }else {
+                                                    <button class="btn btn__select" type="submit">Select</button>
+                                                }
+                                            </form>
+                                        </div>
                                     </div>
+                                }
+                                @*-----------*@
+                            }
+                            else{
+                                <div id="placeholder_bids">
+                                    <p class="fw-bold data_none">You've received no bids</p>
                                 </div>
                             }
-                            @*-----------*@
+                            
                         </div>
                     </div>
                 </div>
                 }
+                    
+                
+                <div id="placeholder_request_details">
+                    <p class="fw-bold data_none">Select a request to see details</p>
+                </div>
                 
             </div>
         </div>

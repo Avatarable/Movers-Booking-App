@@ -11,10 +11,11 @@ function activate(e, id) {
 
     let el = document.getElementById(id);
     el.classList.add("show");    //add 'show' to current detail
+    let data_none = document.getElementById("placeholder_request_details");
+    data_none.style.display = "none";
     
     document.querySelector("#deleteRequest").removeAttribute("hidden");
     document.querySelector("#delete__inp").setAttribute("value", id);
-    console.log(document.querySelector("#delete__inp"));
 };
 
 function keyispressed(e) {

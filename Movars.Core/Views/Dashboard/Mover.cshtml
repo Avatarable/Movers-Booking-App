@@ -21,6 +21,9 @@
 		    </ul>
             <div class="tab-content w-100" id="myTabContent">
                 <div id='upcoming_requests' class="request__table w-100 tab-pane fade show active" role="tabpanel" aria-labelledby="upcoming-tab">
+                    <div class="d-flex justify-content-end">
+                        <p class="count">@requests.ToList().Count Requests</p>
+                    </div>
                     @{
                         if (requests.ToList().Count > 0)
                         {
@@ -62,7 +65,16 @@
                                     @foreach (var bid in (bids ?? new List<Bid>()))
                                         {
                                         <tr class="tb_row" onclick="showDetails(this, '@bid.Id')">
-                                            <td>Want to move @bid.Request.RoomsCount Room(s). From @bid.Request.PickupAddress!.City to @bid.Request.DeliveryAddress!.City</td>
+                                            <td>Want to move 
+                                            @if (bid.Request.RoomsCount == 0)
+                                            {
+                                                <td>Want to move a Studio Room</td>
+                                            }
+                                            else
+                                            {
+                                                <td>Want to move @bid.Request.RoomsCount Room(s)</td>
+                                            }. 
+                                            From @bid.Request.PickupAddress!.City to @bid.Request.DeliveryAddress!.City</td>
                                             <td><strong>Bid Amount: </strong>@bid.Amount</td>
                                             <td class="point_right">
                                                 @if(bid.Status.Equals(BidStatus.Accepted)){
@@ -85,23 +97,29 @@
                     }
                 </div>
 
-
-
             </div>      
         </div>
-
+        <div class="vl"></div>
 
         <div class="details">
             @{
                 foreach (var request in (requests ?? new List<Request>()))
                 {
                         <div class="holder" id="@request.Id">
-                            <div class="info__card d-flex flex-column justify-content-between">
+                            <div class="info__card for_extend d-flex flex-column justify-content-between">
                                 <div class="overlay-dark"></div>
-                                <p class="title align-self-baseline">Want to move @request.RoomsCount Room</p>
+                                    @if (request.RoomsCount == 0)
+                                    {
+                                    <p class="title align-self-baseline">Want to move a Studio Room</p>
+                                    }
+                                    else
+                                    {
+                                        <p class="title align-self-baseline">Want to move @request.RoomsCount Room(s)</p>
+                                    }
                                 <div>
                                     <p class='detail'>Details</p>
                                     <p class="note align-self-end">The booking for relocation on @request.PickupDate.ToLongDateString() .<br /> From @request.PickupAddress!.City to @request.DeliveryAddress!.City.</p>
+                                <p type="button" class="text-muted muted_light mt-1" data-bs-toggle="modal" data-bs-target="#@request.Id">Click here to see more details.</p>
                                 </div>
                             </div>
                             <div class="bids__card">
@@ -123,8 +141,37 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="@request.Id" tabindex="-1" aria-labelledby="@request.Id Label" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="@request.Id Label">
+                                        @if (request.RoomsCount == 0)
+                                        {
+                                            <p class="title align-self-baseline">Want to move a Studio Room</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="title align-self-baseline">Want to move @request.RoomsCount Room(s)</p>
+                                        }
+                                    </h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ...
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn__primary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 }
             }
         </div>
+        
+
     </div>
 </section>

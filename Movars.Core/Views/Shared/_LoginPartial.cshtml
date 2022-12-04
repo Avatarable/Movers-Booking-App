@@ -48,10 +48,17 @@
                         <iconify-icon icon="fluent:payment-16-regular"></iconify-icon>Payment
                     </a>
                 </li>
+                @if (role == "Mover"){
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" href="#">
+                            <iconify-icon icon="ph:truck"></iconify-icon>Vehicle Details
+                        </a>
+                    </li>
+                }
                 <li>
                     <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Logout", new { area = "Identity" })" method="post">
                         <button class="dropdown-item d-flex align-items-center" type="submit">
-                            <iconify-icon icon="ph:truck"></iconify-icon>Logout
+                            <iconify-icon icon="humbleicons:logout"></iconify-icon>Logout
                         </button>                        
                     </form>
                 </li>

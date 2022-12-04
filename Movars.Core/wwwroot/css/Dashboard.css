@@ -87,12 +87,20 @@
 }
 
 
+.count {
+    padding: 5px 10px;
+    border: 1px solid var(--gray);
+    font-weight: bold;
+    border-radius: 5px;
+    color: var(--gray);
+}
+
 
 /* -------Request -------*/
 .request__wrapper {
     flex-wrap: wrap;
     flex-direction: column;
-    gap: 10%;
+    gap: 5%;
 }
 
 .request__wrapper .request__list {
@@ -205,6 +213,10 @@
     color: var(--light);
 }
 
+.details .info__card.for_extend {
+    min-height: 220px;
+}
+
 .details .info__card .title {
     font-size: 1.3rem;
     font-weight: bold;
@@ -233,7 +245,7 @@
     font-weight: bolder;
 }
 
-.bids__list p {
+.bids__list .info p {
     margin: 0;
 }
 
