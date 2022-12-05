@@ -71,6 +71,10 @@ section {
     color: var(--light);
 }
 
+.muted_light {
+    color: var(--coral) !important;
+}
+
 .btn__disable {
     pointer-events: none;
 }
@@ -100,4 +104,10 @@ section {
     font-size: 1.2rem;
     color: var(--gray);
     margin-top: 20%;
+}
+
+.vl {
+    border: none;
+    width: 2px;
+    background-color: var(--gray-light);
 }

@@ -134,20 +134,19 @@ namespace Movars.Core.Controllers
         // GET: Bids/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
-            //if (id == null || _context.Bids == null)
-            //{
-            //    return NotFound();
-            //}
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-            //var bid = await _context.Bids
-            //    .FirstOrDefaultAsync(m => m.Id == id);
-            //if (bid == null)
-            //{
-            //    return NotFound();
-            //}
+            var bid = await _bidService.GetBidById(id);
+            if (bid == null)
+            {
+                return NotFound();
+            }
+            await _bidService.DeleteBid(bid);
 
-            //return View(bid);
-            return View();
+            return View("Mover");
         }
 
         // POST: Bids/Delete/5

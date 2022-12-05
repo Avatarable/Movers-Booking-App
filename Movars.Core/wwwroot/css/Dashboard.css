@@ -312,10 +312,31 @@
     flex: 1;
 }
 
+.modal-dialog {
+    max-width: 80%;
+}
+.modal-content {
+    padding: 2.5%;
+    width: 560px !important;
+    background-color: var(--beige) !important;
+}
+
+
+
+
 
 
 @media only screen and (min-width: 760px) {
     .request__wrapper {
         flex-direction: row;
+    }
+    .modal-xlg {
+        width: 560px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .modal-xlg {
+        width: 600px;
     }
 }

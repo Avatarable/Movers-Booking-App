@@ -92,6 +92,7 @@
     border: 1px solid var(--gray);
     font-weight: bold;
     border-radius: 5px;
+    color: var(--gray);
 }
 
 
@@ -99,7 +100,7 @@
 .request__wrapper {
     flex-wrap: wrap;
     flex-direction: column;
-    gap: 10%;
+    gap: 5%;
 }
 
 .request__wrapper .request__list {
@@ -212,6 +213,10 @@
     color: var(--light);
 }
 
+.details .info__card.for_extend {
+    min-height: 220px;
+}
+
 .details .info__card .title {
     font-size: 1.3rem;
     font-weight: bold;
@@ -307,10 +312,31 @@
     flex: 1;
 }
 
+.modal-dialog {
+    max-width: 80%;
+}
+.modal-content {
+    padding: 2.5%;
+    width: 560px !important;
+    background-color: var(--beige) !important;
+}
+
+
+
+
 
 
 @media only screen and (min-width: 760px) {
     .request__wrapper {
         flex-direction: row;
+    }
+    .modal-xlg {
+        width: 560px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .modal-xlg {
+        width: 600px;
     }
 }
