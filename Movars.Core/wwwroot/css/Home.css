@@ -18,7 +18,7 @@
 }
 
     .btn__secondary:hover {
-        color: var(--white);
+        color: var(--light);
         background-color: var(--dusty-navy);
     }
 
@@ -26,6 +26,11 @@
     color: var(--light);
     background-color: var(--dusty-navy);
 }
+    .btn__secondary_filled:hover {
+        color: var(--dusty-navy);
+        border-color: var(--dusty-navy);
+        background-color: var(--beige);
+    }
 
 .btn__danger {
     color: var(--light);

@@ -111,3 +111,22 @@ section {
     width: 2px;
     background-color: var(--gray-light);
 }
+
+input {
+    height: 3rem;
+    padding-left: 2.1rem;
+    color: var(--dusty-navy);
+    outline: none;
+    box-shadow: none;
+    border: 1px solid var(--light);
+    transition: all 0.2s ease-in-out;
+}
+
+    input:focus {
+        border-bottom: 2px solid var(--dusty-green);
+    }
+
+    input::placeholder,
+    input::-webkit-input-placeholder {
+        color: var(--gray);
+    }

@@ -111,3 +111,24 @@ section {
     width: 2px;
     background-color: var(--gray-light);
 }
+
+.form-control {
+    height: 3rem;
+    color: var(--dusty-navy);
+    outline: none;
+    box-shadow: none;
+    border: 1px solid var(--light);
+    transition: all 0.2s ease-in-out;
+}
+
+    .form-control:focus {
+        border-color: transparent;
+        border-bottom: 2px solid var(--dusty-green);
+        box-shadow: none;
+    }
+
+
+    .form-control::placeholder,
+    .form-control::-webkit-input-placeholder {
+        color: var(--gray);
+    }

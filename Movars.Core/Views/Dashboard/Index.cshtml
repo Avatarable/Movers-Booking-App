@@ -91,7 +91,7 @@
                                                 <input name="bidId" value="@bid.Id" hidden />
                                                 <input name="moverId" value="@bid.Mover.Id" hidden />
                                                 @if(bid.Status == BidStatus.Accepted){
-                                                    <button class="btn text__light bg__dusty_green btn__disable" type="submit">Selected</button>
+                                                    <button class="btn text__light bg__dusty_green btn__disable w-auto" type="submit">Selected </button>
                                                 }else {
                                                     <button class="btn btn__select" type="submit">Select</button>
                                                 }
@@ -100,6 +100,16 @@
                                     </div>
                                 }
                                 @*-----------*@
+
+                                @*get selected bid*@
+                                var selectedBid = bids.Where(b => b.Request.Id == request.Id && b.Status == BidStatus.Accepted).FirstOrDefault();
+                                
+                                @if (selectedBid != null)
+                                {
+                                    <div class="text-center mt-3">
+                                        <a asp-action="Index" asp-controller="Payment" asp-route-id="@selectedBid.Id" class="btn btn__secondary_filled w-100">Proceed to Payment</a>
+                                    </div>
+                                }
                             }
                             else{
                                 <div id="placeholder_bids">
