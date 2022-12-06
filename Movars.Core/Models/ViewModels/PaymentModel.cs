@@ -14,6 +14,9 @@ namespace Movars.Core.Models.ViewModels
         public string pay_item_id { get; set; }
 
         [Required]
+        public string pay_item_name { get; set; }
+
+        [Required]
         public decimal amount { get; set; }
 
         [Required]

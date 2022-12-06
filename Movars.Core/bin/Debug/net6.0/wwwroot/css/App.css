@@ -112,9 +112,8 @@ section {
     background-color: var(--gray-light);
 }
 
-input {
+.form-control {
     height: 3rem;
-    padding-left: 2.1rem;
     color: var(--dusty-navy);
     outline: none;
     box-shadow: none;
@@ -122,11 +121,14 @@ input {
     transition: all 0.2s ease-in-out;
 }
 
-    input:focus {
+    .form-control:focus {
+        border-color: transparent;
         border-bottom: 2px solid var(--dusty-green);
+        box-shadow: none;
     }
 
-    input::placeholder,
-    input::-webkit-input-placeholder {
+
+    .form-control::placeholder,
+    .form-control::-webkit-input-placeholder {
         color: var(--gray);
     }
